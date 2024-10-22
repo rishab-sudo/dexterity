@@ -1,0 +1,8 @@
+.contact_fluid{
+    margin-top: 5%;
+}
+.content_content_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
