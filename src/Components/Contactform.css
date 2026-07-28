@@ -12,26 +12,44 @@
   align-items: center;
   flex-direction: column;
   margin-left: auto;
+<<<<<<< HEAD
   width: 100% !important;
   color: #000000;
   /* background-color: #26d48c; */
   padding:  25px;
   
+=======
+  width: 100%;
+  color: #000000;
+  background-color: #26d48c;
+  padding:  25px;
+>>>>>>> 6c30f0b7cc8334ef48bf96b027dab2fdce147daa
 }
 
 .exp_field_group {
   margin: auto;
+<<<<<<< HEAD
   width: 100% !important;
+=======
+  width: auto;
+>>>>>>> 6c30f0b7cc8334ef48bf96b027dab2fdce147daa
   margin: 2rem auto 0px auto;
   position: relative;
   display: flex;
   align-items: center;
   color: #000000 !important;
+<<<<<<< HEAD
 }
 
 .field_errorbox {
   width: 100% !important;
 }
+=======
+
+}
+
+.field_errorbox {}
+>>>>>>> 6c30f0b7cc8334ef48bf96b027dab2fdce147daa
 
 .exp_form_fields {
   padding-top: 15px;
@@ -39,7 +57,11 @@
   font-weight: 500;
   padding-left: 10px;
   height: 50px;
+<<<<<<< HEAD
   width: 100% !important;
+=======
+  width: 400px;
+>>>>>>> 6c30f0b7cc8334ef48bf96b027dab2fdce147daa
   border-radius: 2px;
   background-color: #ffffff;
   color: #000000 !important;

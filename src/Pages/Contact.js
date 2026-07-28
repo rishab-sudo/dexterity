@@ -2,6 +2,7 @@ import React from 'react'
 import "./Contact.css"
 import { Container } from 'react-bootstrap'
 import Contactform from "../Components/Contactform"
+<<<<<<< HEAD
 
 // Swap these for your real details
 const contactDetails = [
@@ -96,6 +97,21 @@ const Contact = () => {
 
       </Container>
     </Container>
+=======
+const Contact = () => {
+  return (
+ <Container fluid className='contact_fluid'>
+<Container className='content_content_container'>
+  <div>
+    <img  src={require ("../assets/dwabout1.jpg")}alt=""/>
+    </div>
+
+    <div>
+<Contactform/>
+    </div>
+</Container>
+ </Container>
+>>>>>>> 6c30f0b7cc8334ef48bf96b027dab2fdce147daa
   )
 }
 

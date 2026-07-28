@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ==========================================================================
    Contact Page — modern, professional styling
    ========================================================================== */
@@ -232,4 +233,13 @@
   .contact_form_card {
     padding: 28px 22px;
   }
+=======
+.contact_fluid{
+    margin-top: 5%;
+}
+.content_content_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+>>>>>>> 6c30f0b7cc8334ef48bf96b027dab2fdce147daa
 }
