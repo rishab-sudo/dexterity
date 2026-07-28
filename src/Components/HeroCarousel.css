@@ -1,0 +1,56 @@
+.hm_cousel_img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.carousel_caption {
+  bottom: 15%;
+}
+
+.carousel_caption h3 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.carousel_caption p {
+  font-size: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.cr_btn_div {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.cr_btn {
+  background-color: #ff8a00;
+  color: #ffffff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cr_btn:hover {
+  background-color: #000;
+}
+
+@media (max-width: 768px) {
+  .hm_cousel_img {
+    height: 300px;
+  }
+
+  .carousel_caption h3 {
+    font-size: 20px;
+  }
+
+  .carousel_caption p {
+    font-size: 12px;
+  }
+}

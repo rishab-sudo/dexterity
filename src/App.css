@@ -1,0 +1,37 @@
+/* ===== Global Page Typography ===== */
+
+.pageheading {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: #0a0a0a;
+  margin-bottom: 24px;
+}
+
+.pagedescription {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.9;
+  color: #4b5563;
+  margin-bottom: 18px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .pageheading {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pageheading {
+    font-size: 30px;
+    line-height: 1.25;
+  }
+
+  .pagedescription {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+}

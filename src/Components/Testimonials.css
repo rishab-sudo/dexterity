@@ -1,0 +1,72 @@
+.client_fluid {
+  background-color: #f4f7ff;
+  padding: 60px 0;
+}
+
+.clinet_heading_wrapper {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.clinet_heading_wrapper .page_subheading {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* gap between testimonial cards */
+.slider .slick-slide {
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.slider .slick-list {
+  margin: 0 -15px;
+}
+
+.review_main_div {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  min-height: 220px;
+}
+
+.flex_div {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.flex_div img:not(.line) {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.flex_div .line {
+  width: 15px;
+  height: 80px;
+}
+
+.flex_div p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.slider {
+  padding: 0 10px;
+}
+
+@media (max-width: 768px) {
+  .slider .slick-slide {
+    padding: 0 8px;
+  }
+
+  .slider .slick-list {
+    margin: 0 -8px;
+  }
+}

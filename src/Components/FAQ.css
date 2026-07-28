@@ -1,0 +1,130 @@
+/* ===== DexterityWorld FAQ Section ===== */
+.dw-faq-section {
+  position: relative;
+  background: url('../assets/faq_banner_with_search.png') center/cover no-repeat;
+  padding: 0px ;
+  overflow: hidden;
+}
+
+/* Dark overlay */
+.dw-faq-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
+}
+
+.dw-faq-header {
+  max-width: 760px;
+  margin: 0 auto 55px;
+}
+
+.dw-faq-tag {
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(255, 138, 0, 0.15);
+  border: 1px solid rgba(255, 138, 0, 0.35);
+  border-radius: 999px;
+  color: #ff8a00;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  margin-bottom: 18px;
+}
+
+.dw-faq-container {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.dw-faq-item {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.dw-faq-item:hover {
+  border-color: rgba(255, 138, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.dw-faq-item.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 138, 0, 0.5);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.dw-faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dw-faq-icon {
+  color: #ff8a00;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.dw-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.dw-faq-item.active .dw-faq-answer {
+  max-height: 320px;
+}
+
+.dw-faq-answer-content {
+  padding: 0 28px 26px;
+}
+
+.dw-faq-answer-content p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .dw-faq-section {
+    padding: 80px 0;
+  }
+
+  .dw-faq-question {
+    padding: 20px 22px;
+    font-size: 17px;
+  }
+
+  .dw-faq-answer-content {
+    padding: 0 22px 22px;
+  }
+
+  .dw-faq-answer-content p {
+    font-size: 15px;
+  }
+}

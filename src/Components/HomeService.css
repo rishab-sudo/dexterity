@@ -1,0 +1,174 @@
+/* ===== Premium Industry Services Section ===== */
+.industry-services-section {
+  background: #1f2328; /* dark grey background */
+  padding: 90px 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* remove bootstrap white background issue */
+.industry-services-section .container-fluid {
+  background: transparent !important;
+}
+
+/* ===== Header ===== */
+.industry-header {
+  margin-bottom: 55px;
+  padding: 0 15px;
+}
+
+.industry-header .pagedescription {
+  max-width: 720px;
+  margin: 14px auto 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ===== Grid ===== */
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 0 24px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* ===== Card ===== */
+.industry-card {
+  position: relative;
+  min-height: 350px;
+  border-radius: 28px;
+  overflow: hidden;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  transition: all 0.45s ease;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.industry-card:hover {
+  transform: translateY(-10px);
+  background-image: var(--hover-image);
+  box-shadow: 0 5px 25px rgba(255, 138, 0, 0.18);
+}
+
+/* ===== Overlay ===== */
+.industry-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.72) 55%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 32px;
+  transition: background 0.35s ease;
+}
+
+.industry-card:hover .industry-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(0, 0, 0, 0.88) 100%
+  );
+}
+
+/* ===== Content ===== */
+.industry-content h3 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.22;
+  margin-bottom: 14px;
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.industry-content p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 24px;
+  transition: color 0.35s ease;
+}
+
+/* ===== Hover Effect ===== */
+.industry-card:hover .industry-content h3 {
+  color: #ff8a00;
+  transform: translateY(-3px);
+}
+
+.industry-card:hover .industry-content p {
+  color: #ffffff;
+}
+
+/* ===== Button ===== */
+.industry-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 22px;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.35s ease;
+}
+
+.industry-btn:hover {
+  background: #ff8a00;
+  border-color: #ff8a00;
+  color: #000000;
+  box-shadow: 0 11px 20px rgba(255, 138, 0, 0.35);
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 1199px) {
+  .industry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .industry-content h3 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 767px) {
+  .industry-services-section {
+    padding: 70px 0;
+  }
+
+  .industry-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .industry-card {
+    min-height: 360px;
+    border-radius: 22px;
+  }
+
+  .industry-overlay {
+    padding: 24px;
+  }
+
+  .industry-content h3 {
+    font-size: 1.55rem;
+  }
+
+  .industry-content p {
+    font-size: 14px;
+  }
+
+  .industry-btn {
+    width: 100%;
+  }
+}
