@@ -42,31 +42,33 @@ const faqData = [
     answer:
       'DexterityWorld combines creative strategy, technical expertise, transparent communication, and performance-focused execution. We focus on measurable business growth rather than vanity metrics.',
   },
-];
+]
 
 const HomeFaq = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null)
 
   const toggleFaq = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+    setActiveIndex(activeIndex === index ? null : index)
+  }
 
   return (
-    <section className='dw-faq-section'>
-      <div className='dw-faq-overlay'>
-        <div className='container'>
-          <div className='dw-faq-header text-center'>
-            <span className='dw-faq-tag'>FREQUENTLY ASKED QUESTIONS</span>
-            <h2 className='pageheading text-white'>
+    <section className="dw-faq-section">
+      <div className="dw-faq-overlay">
+        <div className="container">
+          <div className="dw-faq-header text-center">
+            <span className="dw-faq-tag">FREQUENTLY ASKED QUESTIONS</span>
+
+            <h2 className="pageheading text-white">
               DexterityWorld Digital Marketing FAQs
             </h2>
-            <p className='pagedescription text-white-50'>
+
+            <p className="pagedescription text-white-50">
               Everything you need to know about our SEO, advertising, website
               development, and digital marketing services.
             </p>
           </div>
 
-          <div className='dw-faq-container'>
+          <div className="dw-faq-columns">
             {faqData.map((faq, index) => (
               <div
                 key={index}
@@ -75,17 +77,18 @@ const HomeFaq = () => {
                 }`}
               >
                 <button
-                  className='dw-faq-question'
+                  className="dw-faq-question"
                   onClick={() => toggleFaq(index)}
                 >
                   <span>{faq.question}</span>
-                  <span className='dw-faq-icon'>
+
+                  <span className="dw-faq-icon">
                     {activeIndex === index ? '−' : '+'}
                   </span>
                 </button>
 
-                <div className='dw-faq-answer'>
-                  <div className='dw-faq-answer-content'>
+                <div className="dw-faq-answer">
+                  <div className="dw-faq-answer-content">
                     <p>{faq.answer}</p>
                   </div>
                 </div>
@@ -95,7 +98,7 @@ const HomeFaq = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default HomeFaq;
+export default HomeFaq

@@ -17,11 +17,10 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
-<<<<<<< HEAD
+
     "sweetalert2": "^11.26.25",
-=======
-    "sweetalert2": "^11.14.2",
->>>>>>> 6c30f0b7cc8334ef48bf96b027dab2fdce147daa
+
+  
     "web-vitals": "^2.1.4"
   },
   "scripts": {
