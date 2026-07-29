@@ -47,11 +47,11 @@ const Navbar = () => {
               {/* Services Dropdown */}
               <li className="nav-item dropdown">
                 <button
-                  className="nav-link dropdown-toggle nav_text btn btn-link border-0 p-0"
+                  type="button"
+                  className="btn nav-link nav_text dropdown-toggle border-0 bg-transparent"
                   id="navbarDropdown"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  type="button"
                 >
                   Services
                 </button>
@@ -77,7 +77,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Query info - hidden on small screens */}
+          {/* Query info */}
           <div className="query_div d-none d-lg-flex">
             <div>
               <img
@@ -89,13 +89,16 @@ const Navbar = () => {
 
             <div className="d-flex flex-column justify-content-start align-items-start text-white-50">
               <h6 className="nav_text_small">Have any query?</h6>
-              <a href="tel:+917055255255" className="nav_text_small text-decoration-none">
+              <a
+                href="tel:+917055255255"
+                className="nav_text_small text-decoration-none"
+              >
                 Call : +91 7055255255
               </a>
             </div>
           </div>
 
-          {/* Hamburger - mobile only */}
+          {/* Hamburger */}
           <button
             className="hamburger_btn d-lg-none"
             type="button"
@@ -113,7 +116,7 @@ const Navbar = () => {
       <div
         className={`mobile_overlay ${isOpen ? 'show' : ''}`}
         onClick={closeMenu}
-      ></div>
+      />
 
       {/* Mobile slider */}
       <div className={`mobile_slider ${isOpen ? 'open' : ''}`}>
@@ -167,7 +170,10 @@ const Navbar = () => {
 
           <div className="d-flex flex-column">
             <h6 className="nav_text_small">Have any query?</h6>
-            <a href="tel:+917055255255" className="nav_text_small text-decoration-none">
+            <a
+              href="tel:+917055255255"
+              className="nav_text_small text-decoration-none"
+            >
               Call : +91 7055255255
             </a>
           </div>
