@@ -34,17 +34,15 @@ const Navbar = () => {
               ))}
 
               <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle nav_text"
-                  href="#"
+                <button
+                  className="nav-link dropdown-toggle nav_text border-0 bg-transparent"
                   id="navbarDropdown"
-                  role="button"
+                  type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  onClick={(e) => e.preventDefault()}
                 >
                   Services
-                </a>
+                </button>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   {SERVICE_LINKS.map(link => (
                     <li key={link.href}><a className="dropdown-item" href={link.href}>{link.label}</a></li>
