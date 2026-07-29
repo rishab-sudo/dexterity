@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from "react-router-dom"
+
 import { Container,Row, Col } from 'react-bootstrap'
-import { MdEmail } from "react-icons/md";
+
 import { FaFacebookF } from "react-icons/fa";
 import { FiInstagram } from "react-icons/fi";
 import { RiWhatsappFill } from "react-icons/ri";
