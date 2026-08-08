@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Container } from "react-bootstrap"
 import "./About.css"
+import PageBanner from '../Components/PageBanner'
 
 // Swap these for your real numbers
 const stats = [
@@ -69,6 +70,13 @@ const Stat = ({ value, suffix, label }) => {
 
 const About = () => {
   return (
+    <>
+       <PageBanner
+        title="About Us"
+        currentPage="About Us"
+        videoSrc="/videos/contact-banner.mp4"
+      />
+
     <Container fluid className='g-0 about_fluid'>
 
       {/* ---------- Hero ---------- */}
@@ -123,6 +131,7 @@ const About = () => {
       </div>
 
     </Container>
+    </>
   )
 }
 

@@ -1,126 +1,153 @@
-/* styles.css */
-.form_heading {
-  font-size: 25px;
-  font-weight: 500;
-  text-transform: capitalize;
-  text-align: center;
-}
-
-.form {
+.contact-form-wrapper {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-left: auto;
+  padding: 50px 20px;
+}
+
+.form-card {
   width: 100%;
-  color: #000000;
-  background-color: #26d48c;
-  padding:  25px;
+  background: #ffffff;
+ padding: 40px;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  border-top: 5px solid #fd7e14;
 }
 
-.exp_field_group {
-  margin: auto;
-  width: auto;
-  margin: 2rem auto 0px auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-  color: #000000 !important;
-
+.form_heading {
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #111827;
 }
 
-.field_errorbox {}
+/* ===== 2 columns ===== */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.field_errorbox {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.top_label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fd7e14;
+}
 
 .exp_form_fields {
-  padding-top: 15px;
-  font-size: 14px;
-  font-weight: 500;
-  padding-left: 10px;
-  height: 50px;
-  width: 400px;
-  border-radius: 2px;
-  background-color: #ffffff;
-  color: #000000 !important;
-  border: none;
+  width: 100%;
+  height: 56px;
+  padding: 14px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #111827;
+  background: #fff;
   outline: none;
-  margin: auto;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
 }
 
-.exp_form_fields:focus~label,
-.exp_form_fields:valid~label {
-  padding-top: 2.5px;
-  top: -3px;
-  left: 5px;
-  font-size: 14px;
+.exp_form_fields:focus {
+  border-color: #fd7e14;
+  box-shadow: 0 0 0 4px rgba(253, 126, 20, 0.15);
 }
 
-.exp_form_fields:hover {
-  color: #000000;
-  background-color: none;
+.exp_form_fields::placeholder {
+  color: #9ca3af;
+}
+
+select.exp_form_fields {
+  cursor: pointer;
+  appearance: none;
 }
 
 .mssg_field {
-  font-size: 14px;
-  font-weight: 500;
-  background-color: #ffffff;
-  /* #282828  gray shade*/
-  color: #000 !important;
-  padding: 18px 14px 0px 10px;
-  min-height: 50px;
-  max-height: 55px;
-
-}
-
-.exp_form_labels {
-  margin-left: 5px;
-  position: absolute;
-  top: 9px;
-  left: 5px;
-  font-size: 14px;
-  pointer-events: none;
-  transition: 0.2s;
-  color: #000000;
-}
-
-.submit_btndiv {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-left: auto;
-  margin-top: 1rem;
-
-}
-
-.form_submit_btn {
-  margin: 20px 0px 10px auto;
-  background-color: #ffffff;
-  color: #000;
-  font-size: 18px;
-  font-weight: 600;
-  padding: 5px 25px;
-  border-radius: 30px;
-  outline: none;
-  border: none;
-  width: auto;
+  min-height: 170px;
+  resize: vertical;
+  line-height: 1.6;
+  padding-top: 14px;
 }
 
 .error {
-  color: red;
-  font-size: 14px;
-  display: flex;
-  justify-content: flex-start;
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 6px;
+  margin-left: 2px;
 }
 
-@media (max-width: 767px) {
-  .form {
-    width: 100%;
+/* ===== Button ===== */
+.submit_btndiv {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.form_submit_btn {
+  background: #fd7e14;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.form_submit_btn:hover {
+  background: #e96b00;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(253, 126, 20, 0.25);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .contact-form-wrapper {
+    padding: 24px 15px;
+  }
+
+  .form-card {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .form_heading {
+    font-size: 28px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .exp_form_fields {
-    height: 50px;
-    width: 75vw;
-    margin: auto;
+    height: 52px;
+    font-size: 14px;
+  }
+
+  .mssg_field {
+    min-height: 140px;
+  }
+
+  .submit_btndiv {
+    justify-content: stretch;
+  }
+
+  .form_submit_btn {
+    width: 100%;
   }
 }
-
-@media (min-width: 768px) and (max-width: 1024px) {}

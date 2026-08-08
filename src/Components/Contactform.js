@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { Container } from 'react-bootstrap';
 import emailjs from 'emailjs-com';
 import Swal from 'sweetalert2';
 import './Contactform.css';
@@ -11,6 +10,7 @@ const Cf = () => {
     fname: '',
     mobileNumber: '',
     email: '',
+    service: '',
     message: '',
   });
 
@@ -18,33 +18,47 @@ const Cf = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
+
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: '',
     }));
   };
 
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.fname) {
-      newErrors.fname = 'Name is required';
+    if (!formData.fname.trim()) {
+      newErrors.fname = 'Please enter your name';
+    } else if (!/^[A-Za-z ]{2,}$/.test(formData.fname)) {
+      newErrors.fname = 'Enter a valid name';
     }
 
-    if (!formData.mobileNumber) {
-      newErrors.mobileNumber = 'Mobile number is required';
-    } else if (!/^\\d{10}$/.test(formData.mobileNumber)) {
+    if (!formData.mobileNumber.trim()) {
+      newErrors.mobileNumber = 'Please enter mobile number';
+    } else if (!/^\d{10}$/.test(formData.mobileNumber)) {
       newErrors.mobileNumber = 'Mobile number must be 10 digits';
     }
 
-    if (!formData.email) {
-      newErrors.email = 'Email is required';
-    } else if (!/\\S+@\\S+\\.\\S+/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Please enter email address';
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
     }
 
-    if (!formData.message) {
-      newErrors.message = 'Message is required';
+    if (!formData.service) {
+      newErrors.service = 'Please select a service';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Please enter your message';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message should be at least 10 characters';
     }
 
     setErrors(newErrors);
@@ -54,193 +68,130 @@ const Cf = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
-      emailjs
-        .sendForm(
-          'service_8h322oq',
-          'template_ajwaoiy',
-          form.current,
-          '3LXSkbjCZ1SGhN6ns'
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
+    if (!validateForm()) return;
 
-            Swal.fire({
-              icon: 'success',
-              title: 'SUCCESS!',
-              text: 'Your message has been sent successfully!',
-            }).then(() => {
-              setFormData({
-                fname: '',
-                mobileNumber: '',
-                email: '',
-                message: '',
-              });
-              setErrors({});
-            });
-          },
-          (error) => {
-            console.log(error.text);
+    emailjs
+      .sendForm(
+        'service_8h322oq',
+        'template_ajwaoiy',
+        form.current,
+        '3LXSkbjCZ1SGhN6ns'
+      )
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Message Sent!',
+          text: 'Thank you! We will contact you shortly.',
+          confirmButtonColor: '#fd7e14',
+        });
 
-            Swal.fire({
-              icon: 'error',
-              title: 'FAILED...',
-              text: 'Something went wrong. Please try again later.',
-            });
-          }
-        );
-    }
+        setFormData({
+          fname: '',
+          mobileNumber: '',
+          email: '',
+          service: '',
+          message: '',
+        });
+
+        setErrors({});
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed!',
+          text: 'Something went wrong. Please try again later.',
+          confirmButtonColor: '#fd7e14',
+        });
+      });
   };
 
   return (
-    <form ref={form} onSubmit={handleSubmit} className="form">
-      <Container>
-        <p className="form_heading">Get a Quote</p>
-      </Container>
+    <div className="contact-form-wrapper">
+      <form ref={form} onSubmit={handleSubmit} className="form-card">
+        <h2 className="form_heading">Get a Quote</h2>
 
-      <div className="field_errorbox">
-        <div className="exp_field_group">
-          <input
-            id="fnameInput"
-            required
-            type="text"
-            name="fname"
-            className="exp_form_fields"
-            value={formData.fname}
-            onChange={handleChange}
-            autoComplete="off"
-          />
+        <div className="form-grid">
+          <div className="field_errorbox">
+            <label className="top_label">Full Name</label>
+            <input
+              type="text"
+              name="fname"
+              className="exp_form_fields"
+              value={formData.fname}
+              onChange={handleChange}
+              autoComplete="off"
+              placeholder="Enter your full name"
+            />
+            {errors.fname && <p className="error">{errors.fname}</p>}
+          </div>
 
-          <label className="exp_form_labels" htmlFor="fnameInput">
-            Name
-          </label>
+          <div className="field_errorbox">
+            <label className="top_label">Mobile Number</label>
+            <input
+              type="tel"
+              name="mobileNumber"
+              className="exp_form_fields"
+              value={formData.mobileNumber}
+              onChange={handleChange}
+              maxLength={10}
+              placeholder="Enter your mobile number"
+            />
+            {errors.mobileNumber && (
+              <p className="error">{errors.mobileNumber}</p>
+            )}
+          </div>
 
-          <img
-            src={require('../assets/user.png')}
-            alt="User icon"
-            style={{
-              height: '20px',
-              width: '20px',
-              position: 'absolute',
-              right: '10px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-            }}
-          />
+          <div className="field_errorbox">
+            <label className="top_label">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              className="exp_form_fields"
+              value={formData.email}
+              onChange={handleChange}
+              autoComplete="off"
+              placeholder="Enter your email address"
+            />
+            {errors.email && <p className="error">{errors.email}</p>}
+          </div>
+
+          <div className="field_errorbox">
+            <label className="top_label">Select Service</label>
+            <select
+              name="service"
+              className="exp_form_fields"
+              value={formData.service}
+              onChange={handleChange}
+            >
+              <option value="">Choose a service</option>
+              <option value="Clinical Genomics">Clinical Genomics</option>
+              <option value="Research Genomics">Research Genomics</option>
+              <option value="Agrigenomics">Agrigenomics</option>
+              <option value="Bioinformatics">Bioinformatics</option>
+            </select>
+            {errors.service && <p className="error">{errors.service}</p>}
+          </div>
         </div>
 
-        {errors.fname && <p className="error">{errors.fname}</p>}
-      </div>
-
-      <div className="field_errorbox">
-        <div className="exp_field_group">
-          <input
-            id="mobileInput"
-            required
-            type="tel"
-            name="mobileNumber"
-            className="exp_form_fields"
-            value={formData.mobileNumber}
-            onChange={handleChange}
-            autoComplete="off"
-            maxLength={10}
-          />
-
-          <label className="exp_form_labels" htmlFor="mobileInput">
-            Mobile Number
-          </label>
-
-          <img
-            src={require('../assets/call.png')}
-            alt="Phone icon"
-            style={{
-              height: '20px',
-              width: '20px',
-              position: 'absolute',
-              right: '10px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-            }}
-          />
-        </div>
-
-        {errors.mobileNumber && (
-          <p className="error">{errors.mobileNumber}</p>
-        )}
-      </div>
-
-      <div className="field_errorbox">
-        <div className="exp_field_group">
-          <input
-            id="emailInput"
-            required
-            type="email"
-            name="email"
-            className="exp_form_fields"
-            value={formData.email}
-            onChange={handleChange}
-            autoComplete="off"
-          />
-
-          <label className="exp_form_labels" htmlFor="emailInput">
-            Email
-          </label>
-
-          <img
-            src={require('../assets/email.png')}
-            alt="Email icon"
-            style={{
-              height: '20px',
-              width: '20px',
-              position: 'absolute',
-              right: '10px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-            }}
-          />
-        </div>
-
-        {errors.email && <p className="error">{errors.email}</p>}
-      </div>
-
-      <div className="field_errorbox">
-        <div className="exp_field_group mss_field">
+        <div className="field_errorbox full-width">
+          <label className="top_label">Your Message</label>
           <textarea
-            id="messageInput"
-            required
             name="message"
             className="exp_form_fields mssg_field"
             value={formData.message}
             onChange={handleChange}
+            placeholder="Write your message here..."
           />
-
-          <label className="exp_form_labels" htmlFor="messageInput">
-            Message
-          </label>
-
-          <img
-            src={require('../assets/message.png')}
-            alt="Message icon"
-            style={{
-              height: '20px',
-              width: '20px',
-              position: 'absolute',
-              right: '10px',
-              top: '20px',
-            }}
-          />
+          {errors.message && <p className="error">{errors.message}</p>}
         </div>
 
-        {errors.message && <p className="error">{errors.message}</p>}
-      </div>
-
-      <div className="submit_btndiv">
-        <button className="form_submit_btn" type="submit">
-          Submit
-        </button>
-      </div>
-    </form>
+        <div className="submit_btndiv">
+          <button className="form_submit_btn" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
