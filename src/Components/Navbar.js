@@ -1,60 +1,111 @@
-import React, { useState } from 'react'
-import "./Navbar.css"
-
-const NAV_LINKS = [
-  { label: "Home", href: "/home" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import "./Navbar.css";
 
 const SERVICE_LINKS = [
-  { label: "Action", href: "#abc" },
-  { label: "Another action", href: "#def" },
+  { label: "SEO", href: "/seo" },
+  { label: "Website Designing", href: "/digital" },
+  { label: "Marketing", href: "/marketing" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const location = useLocation();
 
   const openMenu = () => setIsOpen(true);
-  const closeMenu = () => setIsOpen(false);
+  const closeMenu = () => {
+    setIsOpen(false);
+    setDropdownOpen(false);
+  };
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Close dropdown & mobile menu on route change
+  useEffect(() => {
+    setDropdownOpen(false);
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const isServiceActive = SERVICE_LINKS.some(link => location.pathname === link.href);
 
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light nav_container">
         <div className="container-fluid">
-          <a className="navbar-brand nav_text" href="/">DexterityWorld</a>
+          <Link className="navbar-brand nav_text" to="/">DexterityWorld</Link>
 
           {/* Desktop nav links */}
           <div className="collapse navbar-collapse navlink_div d-none d-lg-flex" id="navbarSupportedContent">
             <ul className="navbar-nav mb-2 mb-lg-0">
-              {NAV_LINKS.slice(0, 2).map(link => (
-                <li className="nav-item" key={link.href}>
-                  <a className="nav-link active nav_text" aria-current="page" href={link.href}>{link.label}</a>
-                </li>
-              ))}
+              <li className="nav-item">
+                <Link
+                  className={`nav-link nav_text ${location.pathname === '/' || location.pathname === '/home' ? 'active' : ''}`}
+                  to="/"
+                >
+                  Home
+                </Link>
+              </li>
 
-              <li className="nav-item dropdown">
+              <li className="nav-item">
+                <Link
+                  className={`nav-link nav_text ${location.pathname === '/about' ? 'active' : ''}`}
+                  to="/about"
+                >
+                  About
+                </Link>
+              </li>
+
+              <li
+                className={`nav-item dropdown custom-dropdown ${dropdownOpen ? 'show' : ''}`}
+                ref={dropdownRef}
+                onMouseEnter={() => setDropdownOpen(true)}
+                onMouseLeave={() => setDropdownOpen(false)}
+              >
                 <button
-                  className="nav-link dropdown-toggle nav_text border-0 bg-transparent"
+                  className={`nav-link dropdown-toggle nav_text border-0 bg-transparent ${isServiceActive ? 'active-service' : ''}`}
                   id="navbarDropdown"
                   type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                  onClick={() => setDropdownOpen((prev) => !prev)}
+                  aria-expanded={dropdownOpen}
                 >
                   Services
                 </button>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <ul className={`dropdown-menu custom-dropdown-menu ${dropdownOpen ? 'show' : ''}`} aria-labelledby="navbarDropdown">
                   {SERVICE_LINKS.map(link => (
-                    <li key={link.href}><a className="dropdown-item" href={link.href}>{link.label}</a></li>
+                    <li key={link.href}>
+                      <Link
+                        className={`dropdown-item custom-dropdown-item ${location.pathname === link.href ? 'active-dropdown' : ''}`}
+                        to={link.href}
+                        onClick={() => setDropdownOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </li>
 
-              {NAV_LINKS.slice(2).map(link => (
-                <li className="nav-item" key={link.href}>
-                  <a className="nav-link active nav_text" aria-current="page" href={link.href}>{link.label}</a>
-                </li>
-              ))}
+              <li className="nav-item">
+                <Link
+                  className={`nav-link nav_text ${location.pathname === '/contact' ? 'active' : ''}`}
+                  to="/contact"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -65,7 +116,7 @@ const Navbar = () => {
             </div>
             <div className='d-flex flex-column justify-content-start align-items-start text-white-50'>
               <h6 className='nav_text_small'>Have any query?</h6>
-              <h6 className='nav_text_small'>Call : +91 7055255255</h6>
+              <a href="tel:+917055255255" className='nav_text_small text-decoration-none'>Call : +91 7055255255</a>
             </div>
           </div>
 
@@ -82,18 +133,37 @@ const Navbar = () => {
       <div className={`mobile_overlay ${isOpen ? 'show' : ''}`} onClick={closeMenu}></div>
       <div className={`mobile_slider ${isOpen ? 'open' : ''}`}>
         <div className="mobile_slider_top">
-          <span className="navbar-brand nav_text">DexterityWorld</span>
+          <Link to="/" className="navbar-brand nav_text" onClick={closeMenu}>DexterityWorld</Link>
           <button className="close_btn" onClick={closeMenu} aria-label="Close menu">&times;</button>
         </div>
 
         <div className="mobile_slider_middle">
-          {NAV_LINKS.map(link => (
-            <a key={link.href} className="mobile_link" href={link.href} onClick={closeMenu}>{link.label}</a>
-          ))}
-          <span className="mobile_link_heading">Services</span>
-          {SERVICE_LINKS.map(link => (
-            <a key={link.href} className="mobile_sublink" href={link.href} onClick={closeMenu}>{link.label}</a>
-          ))}
+          <Link className={`mobile_link ${location.pathname === '/' || location.pathname === '/home' ? 'active-mobile-link' : ''}`} to="/" onClick={closeMenu}>
+            Home
+          </Link>
+          <Link className={`mobile_link ${location.pathname === '/about' ? 'active-mobile-link' : ''}`} to="/about" onClick={closeMenu}>
+            About
+          </Link>
+
+          <div className="mobile_services_section">
+            <span className="mobile_link_heading">Services</span>
+            <div className="mobile_services_list">
+              {SERVICE_LINKS.map(link => (
+                <Link
+                  key={link.href}
+                  className={`mobile_sublink ${location.pathname === link.href ? 'active-mobile-sublink' : ''}`}
+                  to={link.href}
+                  onClick={closeMenu}
+                >
+                  <span className="bullet-dot">•</span> {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link className={`mobile_link ${location.pathname === '/contact' ? 'active-mobile-link' : ''}`} to="/contact" onClick={closeMenu}>
+            Contact
+          </Link>
         </div>
 
         <div className="mobile_slider_bottom">
@@ -105,7 +175,8 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
+
