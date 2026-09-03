@@ -225,21 +225,24 @@ const styles = `
 
   .dm-section-head {
     text-align: center;
-    margin-bottom: 44px;
+    margin-bottom: 32px;
   }
   .dm-section-title {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 800;
     letter-spacing: -0.01em;
-    padding-top: 25px;
   }
   .dm-section-title .accent { color: var(--orange); }
+
+  .dm-benefits-wrap {
+    padding: 90px 0 40px;
+  }
 
   .dm-benefits-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    padding: 25px 0 50px;
+    padding: 0 0 30px;
   }
   @media (max-width: 900px) { .dm-benefits-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 520px) { .dm-benefits-grid { grid-template-columns: 1fr; } }
@@ -786,7 +789,7 @@ export default function DigitalMarketingSection() {
       </div>
 
       {/* BENEFITS */}
-      <section className="dm-section">
+      <section className="dm-section dm-benefits-wrap">
         <Reveal>
           <motion.div className="dm-section-head" variants={fadeUp}>
             <h2 className="dm-section-title">
@@ -819,8 +822,7 @@ export default function DigitalMarketingSection() {
       <section className="dm-section dm-bento-wrap">
         <Reveal>
           <motion.div className="dm-section-head" variants={fadeUp}>
-            {/* <span className="dm-eyebrow">Why Choose Us</span> */}
-            <h2 className="dm-section-title" style={{ marginTop: 10 }}>
+            <h2 className="dm-section-title">
               Why Choose <span className="accent">Us</span>
             </h2>
           </motion.div>

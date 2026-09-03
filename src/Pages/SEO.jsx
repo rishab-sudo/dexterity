@@ -222,10 +222,9 @@ const styles = `
 
   .so-section-head {
     text-align: center;
-    margin-bottom: 44px;
+    margin-bottom: 32px;
   }
   .so-section-title {
-  padding-top: 25px;
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 800;
     letter-spacing: -0.01em;
@@ -238,11 +237,15 @@ const styles = `
     margin-top: 10px;
   }
 
+  .so-benefits-wrap {
+    padding: 90px 0 40px;
+  }
+
   .so-benefits-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    padding: 25px 0 30px;
+    padding: 0 0 30px;
   }
   @media (max-width: 900px) { .so-benefits-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 520px) { .so-benefits-grid { grid-template-columns: 1fr; } }
@@ -953,7 +956,7 @@ export default function SeoServicesSection() {
 
       {/* BENEFITS + SEO PROCESS — light */}
       <div className="so-theme-light">
-      <section className="so-section">
+      <section className="so-section so-benefits-wrap">
         <Reveal>
           <motion.div className="so-section-head" variants={fadeUp}>
             <h2 className="so-section-title">
@@ -1018,9 +1021,8 @@ export default function SeoServicesSection() {
       <section className="so-section so-bento-wrap">
         <Reveal>
           <motion.div className="so-section-head" variants={fadeUp}>
-            {/* <span className="so-eyebrow">Why Choose Us</span> */}
-            <h2 className="so-section-title" style={{ marginTop: 10 }}>
-              Why Choose<span className="accent">Us</span>
+            <h2 className="so-section-title">
+              Why Choose <span className="accent">Us</span>
             </h2>
           </motion.div>
 

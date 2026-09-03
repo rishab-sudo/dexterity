@@ -1,17 +1,19 @@
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
-  FileText,
-  Settings,
-  MapPinned,
-  Globe,
-  Target,
   PenTool,
+  Smartphone,
   ShoppingCart,
-  BarChart3,
-  TrendingUp,
+  Palette,
+  Wrench,
+  Zap,
+  Database,
+  AppWindow,
   Search,
+  TrendingUp,
   ShieldCheck,
+  Settings2,
+  ShoppingBag,
   ArrowRight,
   MapPin,
   Phone,
@@ -23,15 +25,14 @@ import {
 } from "lucide-react";
 
 /* ---------------------------------------------------------
-   Same design system as the other service sections —
-   classes prefixed "so-" so all three can live on one page.
-   Band order for THIS section starts dark (not light):
-   Hero(dark) -> Benefits+Process(light) -> Why Choose Us(dark)
-   -> How We Work(light) -> Pricing(dark) -> FAQ(light) -> Contact(dark)
+   Same design system as the Digital Marketing section —
+   classes prefixed "wd-" so both can live on one page.
+   bg        near-black / white alternating bands
+   orange    #FF6A1A primary accent / #FFA157 light / #C2410C deep
 --------------------------------------------------------- */
 
 const styles = `
-  .so-root {
+  .wd-root {
     --bg: #111113;
     --bg-soft: #18181B;
     --surface: #1D1D22;
@@ -51,7 +52,7 @@ const styles = `
     overflow: hidden;
   }
 
-  .so-theme-light {
+  .wd-theme-light {
     --bg: #FFFFFF;
     --bg-soft: #F1F1F4;
     --surface: #F7F7F9;
@@ -66,7 +67,7 @@ const styles = `
     color: var(--white);
   }
 
-  .so-grid-bg {
+  .wd-grid-bg {
     position: absolute;
     inset: 0;
     background-image:
@@ -77,14 +78,14 @@ const styles = `
     pointer-events: none;
   }
 
-  .so-section {
+  .wd-section {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  .so-eyebrow {
+  .wd-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -94,28 +95,28 @@ const styles = `
     text-transform: uppercase;
     color: var(--orange);
   }
-  .so-eyebrow::before {
+  .wd-eyebrow::before {
     content: "";
     width: 18px;
     height: 1px;
     background: var(--orange);
   }
 
-  .so-h1 {
+  .wd-h1 {
     font-size: clamp(2.2rem, 4.6vw, 3.6rem);
     line-height: 1.05;
     font-weight: 800;
     letter-spacing: -0.02em;
     margin: 18px 0 20px;
   }
-  .so-h1 .accent {
+  .wd-h1 .accent {
     background: linear-gradient(100deg, var(--orange-light), var(--orange));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  .so-lede {
+  .wd-lede {
     color: var(--muted);
     font-size: 16px;
     line-height: 1.7;
@@ -123,14 +124,14 @@ const styles = `
     margin-bottom: 14px;
   }
 
-  .so-btn-row {
+  .wd-btn-row {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
     margin-top: 30px;
   }
 
-  .so-btn-primary, .so-btn-outline {
+  .wd-btn-primary, .wd-btn-outline {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -142,35 +143,35 @@ const styles = `
     border: none;
     font-family: inherit;
   }
-  .so-btn-primary {
+  .wd-btn-primary {
     background: linear-gradient(120deg, var(--orange-light), var(--orange) 60%, var(--orange-deep));
     color: #0A0A0B;
     box-shadow: 0 8px 24px -8px rgba(255,106,26,0.55);
   }
-  .so-btn-outline {
+  .wd-btn-outline {
     background: transparent;
     color: var(--white);
     border: 1px solid var(--border-strong);
   }
 
-  .so-hero-grid {
+  .wd-hero-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 0.9fr 1.1fr;
     gap: 56px;
     align-items: start;
     padding: 110px 0 90px;
   }
   @media (max-width: 880px) {
-    .so-hero-grid { grid-template-columns: 1fr; padding: 70px 0 50px; }
+    .wd-hero-grid { grid-template-columns: 1fr; padding: 70px 0 50px; }
   }
 
-  .so-cap-panel {
+  .wd-cap-panel {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 22px;
   }
-  .so-cap-title {
+  .wd-cap-title {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -179,15 +180,15 @@ const styles = `
     margin-bottom: 16px;
     padding-left: 4px;
   }
-  .so-cap-list {
+  .wd-cap-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
   @media (max-width: 520px) {
-    .so-cap-list { grid-template-columns: 1fr; }
+    .wd-cap-list { grid-template-columns: 1fr; }
   }
-  .so-cap-item {
+  .wd-cap-item {
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -197,7 +198,7 @@ const styles = `
     background: var(--bg-soft);
     cursor: pointer;
   }
-  .so-cap-icon {
+  .wd-cap-icon {
     flex-shrink: 0;
     width: 30px;
     height: 30px;
@@ -209,50 +210,54 @@ const styles = `
     color: var(--orange-light);
     transition: background 0.2s ease, color 0.2s ease;
   }
-  .so-cap-name {
+  .wd-cap-name {
     font-size: 13.5px;
     font-weight: 700;
     line-height: 1.3;
   }
-  .so-cap-sub {
+  .wd-cap-sub {
     font-size: 11px;
     color: var(--muted);
     margin-top: 2px;
   }
 
-  .so-section-head {
+  .wd-section-head {
     text-align: center;
-    margin-bottom: 44px;
+    margin-bottom: 32px;
   }
-  .so-section-title {
+  .wd-section-title {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 800;
     letter-spacing: -0.01em;
   }
-  .so-section-title .accent { color: var(--orange); }
-  .so-section-sub {
+  .wd-section-title .accent { color: var(--orange); }
+  .wd-section-sub {
     text-align: center;
     color: var(--muted);
     font-size: 14px;
     margin-top: 10px;
   }
 
-  .so-benefits-grid {
+  .wd-benefits-wrap {
+    padding: 90px 0 40px;
+  }
+
+  .wd-benefits-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    padding: 90px 0 60px;
+    padding: 0 0 30px;
   }
-  @media (max-width: 900px) { .so-benefits-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 520px) { .so-benefits-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .wd-benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .wd-benefits-grid { grid-template-columns: 1fr; } }
 
-  .so-benefit-card {
+  .wd-benefit-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 22px 18px;
   }
-  .so-benefit-icon {
+  .wd-benefit-icon {
     width: 38px;
     height: 38px;
     border-radius: 10px;
@@ -263,22 +268,28 @@ const styles = `
     color: var(--orange);
     margin-bottom: 14px;
   }
-  .so-benefit-name {
+  .wd-benefit-name {
     font-size: 14.5px;
     font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .wd-benefit-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
   }
 
-  .so-process-wrap {
+  .wd-process-wrap {
     padding: 30px 0 110px;
     position: relative;
   }
-  .so-process-track {
+  .wd-process-track {
     display: flex;
     justify-content: space-between;
     position: relative;
     padding-top: 10px;
   }
-  .so-process-line {
+  .wd-process-line {
     position: absolute;
     top: 28px;
     left: 28px;
@@ -287,7 +298,7 @@ const styles = `
     background: var(--border);
     transform-origin: left;
   }
-  .so-process-line-fill {
+  .wd-process-line-fill {
     position: absolute;
     top: 28px;
     left: 28px;
@@ -295,7 +306,7 @@ const styles = `
     background: linear-gradient(90deg, var(--orange-deep), var(--orange));
     transform-origin: left;
   }
-  .so-process-step {
+  .wd-process-step {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -304,7 +315,7 @@ const styles = `
     position: relative;
     z-index: 1;
   }
-  .so-process-num {
+  .wd-process-num {
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -317,31 +328,31 @@ const styles = `
     align-items: center;
     justify-content: center;
   }
-  .so-process-label {
+  .wd-process-label {
     font-size: 13px;
     font-weight: 700;
     color: var(--white);
   }
   @media (max-width: 700px) {
-    .so-process-track { flex-wrap: wrap; gap: 28px 12px; }
-    .so-process-line, .so-process-line-fill { display: none; }
+    .wd-process-track { flex-wrap: wrap; gap: 28px 12px; }
+    .wd-process-line, .wd-process-line-fill { display: none; }
   }
 
-  .so-bento-wrap { padding: 130px 0 110px; }
-  .so-bento-grid {
+  .wd-bento-wrap { padding: 130px 0 110px; }
+  .wd-bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
-  @media (max-width: 760px) { .so-bento-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 520px) { .so-bento-grid { grid-template-columns: 1fr; } }
-  .so-bento-item {
+  @media (max-width: 760px) { .wd-bento-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .wd-bento-grid { grid-template-columns: 1fr; } }
+  .wd-bento-item {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 18px;
     padding: 26px 22px;
   }
-  .so-bento-check {
+  .wd-bento-check {
     width: 34px;
     height: 34px;
     border-radius: 10px;
@@ -352,16 +363,16 @@ const styles = `
     justify-content: center;
     margin-bottom: 16px;
   }
-  .so-bento-name { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-  .so-bento-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .wd-bento-name { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .wd-bento-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-  .so-how-wrap { padding: 90px 0 110px; }
-  .so-how-row {
+  .wd-how-wrap { padding: 90px 0 110px; }
+  .wd-how-row {
     display: flex;
     align-items: stretch;
     gap: 0;
   }
-  .so-how-card {
+  .wd-how-card {
     flex: 1;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -369,17 +380,17 @@ const styles = `
     padding: 24px;
     position: relative;
   }
-  .so-how-num {
+  .wd-how-num {
     position: absolute;
     top: 16px;
     right: 18px;
     font-size: 34px;
     font-weight: 800;
-    color: rgba(10,10,12,0.08);
+    color: rgba(255,255,255,0.08);
   }
-  .so-how-title { font-size: 16px; font-weight: 800; margin-bottom: 10px; }
-  .so-how-desc { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 88%; }
-  .so-how-connector {
+  .wd-how-title { font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+  .wd-how-desc { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 88%; }
+  .wd-how-connector {
     width: 28px;
     flex-shrink: 0;
     align-self: center;
@@ -388,7 +399,7 @@ const styles = `
     position: relative;
     overflow: hidden;
   }
-  .so-how-connector-fill {
+  .wd-how-connector-fill {
     position: absolute;
     top: 0;
     left: 0;
@@ -396,19 +407,19 @@ const styles = `
     background: var(--orange);
   }
   @media (max-width: 880px) {
-    .so-how-row { flex-direction: column; gap: 16px; }
-    .so-how-connector { display: none; }
+    .wd-how-row { flex-direction: column; gap: 16px; }
+    .wd-how-connector { display: none; }
   }
 
-  .so-pricing-wrap { padding: 90px 0 110px; }
-  .so-pricing-grid {
+  .wd-pricing-wrap { padding: 90px 0 110px; }
+  .wd-pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     align-items: stretch;
   }
-  @media (max-width: 900px) { .so-pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
-  .so-price-card {
+  @media (max-width: 900px) { .wd-pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
+  .wd-price-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 20px;
@@ -418,11 +429,11 @@ const styles = `
     position: relative;
     overflow: hidden;
   }
-  .so-price-card.popular {
+  .wd-price-card.popular {
     border-color: var(--orange);
     box-shadow: 0 16px 34px -16px rgba(255,106,26,0.45);
   }
-  .so-price-badge {
+  .wd-price-badge {
     position: absolute;
     top: 18px;
     right: -32px;
@@ -435,7 +446,7 @@ const styles = `
     text-transform: uppercase;
     transform: rotate(45deg);
   }
-  .so-price-name {
+  .wd-price-name {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -443,12 +454,12 @@ const styles = `
     color: var(--muted);
     margin-bottom: 8px;
   }
-  .so-price-value {
+  .wd-price-value {
     font-size: 28px;
     font-weight: 800;
     margin-bottom: 22px;
   }
-  .so-price-feature-list {
+  .wd-price-feature-list {
     list-style: none;
     padding: 0;
     margin: 0 0 26px;
@@ -457,15 +468,15 @@ const styles = `
     gap: 12px;
     flex: 1;
   }
-  .so-price-feature {
+  .wd-price-feature {
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 13.5px;
     color: var(--white);
   }
-  .so-price-feature svg { color: var(--orange); flex-shrink: 0; }
-  .so-price-cta {
+  .wd-price-feature svg { color: var(--orange); flex-shrink: 0; }
+  .wd-price-cta {
     width: 100%;
     padding: 13px;
     border-radius: 10px;
@@ -477,86 +488,39 @@ const styles = `
     border: 1px solid var(--border-strong);
     font-family: inherit;
   }
-  .so-price-card.popular .so-price-cta {
+  .wd-price-card.popular .wd-price-cta {
     background: linear-gradient(100deg, var(--orange-light), var(--orange));
     color: #0A0A0B;
     border: none;
   }
 
-  .so-faq-wrap { padding: 90px 0 110px; }
-  .so-faq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    align-items: start;
-  }
-  @media (max-width: 760px) { .so-faq-grid { grid-template-columns: 1fr; } }
-  .so-faq-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .so-faq-question {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 16px 18px;
-  }
-  .so-faq-q-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .so-faq-q-icon {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: rgba(255,106,26,0.14);
-    color: var(--orange);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .so-faq-q-text { font-size: 14px; font-weight: 700; }
-  .so-faq-chevron { color: var(--muted); flex-shrink: 0; }
-  .so-faq-answer-inner {
-    padding: 0 18px 18px 54px;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .so-contact-wrap {
+  .wd-contact-wrap {
     padding: 90px 0 110px;
     display: grid;
     grid-template-columns: 1.3fr 0.9fr;
     gap: 24px;
   }
-  @media (max-width: 880px) { .so-contact-wrap { grid-template-columns: 1fr; } }
+  @media (max-width: 880px) { .wd-contact-wrap { grid-template-columns: 1fr; } }
 
-  .so-form-card {
+  .wd-form-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 22px;
     padding: 34px;
   }
-  .so-form-heading {
+  .wd-form-heading {
     font-size: 22px;
     font-weight: 800;
     margin-bottom: 22px;
   }
-  .so-form-row {
+  .wd-form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     margin-bottom: 16px;
   }
-  @media (max-width: 520px) { .so-form-row { grid-template-columns: 1fr; } }
-  .so-field label {
+  @media (max-width: 520px) { .wd-form-row { grid-template-columns: 1fr; } }
+  .wd-field label {
     display: block;
     font-size: 11px;
     font-weight: 700;
@@ -565,9 +529,9 @@ const styles = `
     color: var(--muted);
     margin-bottom: 8px;
   }
-  .so-field input,
-  .so-field select,
-  .so-field textarea {
+  .wd-field input,
+  .wd-field select,
+  .wd-field textarea {
     width: 100%;
     background: var(--bg-soft);
     border: 1px solid var(--border);
@@ -579,15 +543,15 @@ const styles = `
     outline: none;
     box-sizing: border-box;
   }
-  .so-field input::placeholder, .so-field textarea::placeholder { color: #5c5c62; }
-  .so-field input:focus,
-  .so-field select:focus,
-  .so-field textarea:focus {
+  .wd-field input::placeholder, .wd-field textarea::placeholder { color: #6b6b73; }
+  .wd-field input:focus,
+  .wd-field select:focus,
+  .wd-field textarea:focus {
     border-color: var(--orange);
   }
-  .so-field select { appearance: none; }
-  .so-select-wrap { position: relative; }
-  .so-select-wrap svg {
+  .wd-field select { appearance: none; }
+  .wd-select-wrap { position: relative; }
+  .wd-select-wrap svg {
     position: absolute;
     right: 14px;
     top: 50%;
@@ -595,7 +559,7 @@ const styles = `
     color: var(--muted);
     pointer-events: none;
   }
-  .so-submit {
+  .wd-submit {
     width: 100%;
     margin-top: 6px;
     display: flex;
@@ -612,7 +576,7 @@ const styles = `
     cursor: pointer;
   }
 
-  .so-info-card {
+  .wd-info-card {
     background: linear-gradient(165deg, var(--info-grad), var(--surface) 55%);
     border: 1px solid var(--border);
     border-radius: 22px;
@@ -622,13 +586,13 @@ const styles = `
     gap: 22px;
     height: fit-content;
   }
-  .so-info-heading {
+  .wd-info-heading {
     font-size: 18px;
     font-weight: 800;
     position: relative;
     padding-bottom: 12px;
   }
-  .so-info-heading::after {
+  .wd-info-heading::after {
     content: "";
     position: absolute;
     left: 0; bottom: 0;
@@ -636,12 +600,12 @@ const styles = `
     height: 2px;
     background: var(--orange);
   }
-  .so-info-row {
+  .wd-info-row {
     display: flex;
     gap: 14px;
     align-items: flex-start;
   }
-  .so-info-icon {
+  .wd-info-icon {
     width: 38px;
     height: 38px;
     border-radius: 10px;
@@ -652,94 +616,138 @@ const styles = `
     justify-content: center;
     flex-shrink: 0;
   }
-  .so-info-label {
+  .wd-info-label {
     font-size: 13px;
     font-weight: 700;
     margin-bottom: 4px;
   }
-  .so-info-value {
+  .wd-info-value {
     font-size: 13px;
     color: var(--muted);
     line-height: 1.6;
   }
-  .so-info-value a { color: var(--orange-light); text-decoration: none; }
+  .wd-info-value a { color: var(--orange-light); text-decoration: none; }
+
+  .wd-faq-wrap { padding: 90px 0 130px; }
+  .wd-faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  @media (max-width: 760px) { .wd-faq-grid { grid-template-columns: 1fr; } }
+  .wd-faq-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .wd-faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+  }
+  .wd-faq-q-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .wd-faq-q-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255,106,26,0.14);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .wd-faq-q-text { font-size: 14px; font-weight: 700; }
+  .wd-faq-chevron { color: var(--muted); flex-shrink: 0; }
+  .wd-faq-answer-inner {
+    padding: 0 18px 18px 54px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
 `;
 
 const capabilities = [
-  { icon: FileText, name: "On-Page SEO" },
-  { icon: Settings, name: "Technical SEO" },
-  { icon: MapPinned, name: "Local SEO" },
-  { icon: Globe, name: "Link Building" },
-  { icon: Target, name: "Keyword Research" },
-  { icon: PenTool, name: "Content SEO" },
-  { icon: ShoppingCart, name: "E-commerce SEO" },
-  { icon: BarChart3, name: "Competitor Analysis" },
+  { icon: PenTool, name: "Custom Web Design" },
+  { icon: Smartphone, name: "Responsive Design" },
+  { icon: ShoppingCart, name: "E-Commerce" },
+  { icon: Palette, name: "UI/UX Design" },
+  { icon: Wrench, name: "Maintenance" },
+  { icon: Zap, name: "Performance" },
+  { icon: Database, name: "CMS Development" },
+  { icon: AppWindow, name: "Custom Web Apps" },
 ];
 
 const benefits = [
-  { icon: TrendingUp, name: "Organic Traffic" },
-  { icon: Search, name: "Higher Rankings" },
-  { icon: MapPinned, name: "Local Dominance" },
-  { icon: ShieldCheck, name: "Brand Authority" },
-  { icon: Settings, name: "Technical Excellence" },
-  { icon: Globe, name: "Quality Backlinks" },
-  { icon: PenTool, name: "Content Relevance" },
-  { icon: BarChart3, name: "Long-Term Results" },
+  { icon: Smartphone, name: "Mobile Responsive", desc: "Flawless experience across all devices." },
+  { icon: Zap, name: "Fast Loading", desc: "Optimized for lightning-fast speeds." },
+  { icon: Search, name: "SEO Friendly", desc: "Built with search engines in mind." },
+  { icon: PenTool, name: "Custom Design", desc: "Unique layouts tailored to your brand." },
+  { icon: TrendingUp, name: "High Conversion", desc: "UI/UX designed to turn visitors into buyers." },
+  { icon: ShieldCheck, name: "Secure & Scalable", desc: "Robust architecture that grows with you." },
+  { icon: Settings2, name: "Easy CMS", desc: "Manage content effortlessly without coding." },
+  { icon: ShoppingBag, name: "E-Commerce Ready", desc: "Seamless shopping experiences integrated." },
 ];
 
-const seoProcessSteps = ["Audit", "Keyword Research", "On-Page SEO", "Technical SEO", "Link Building", "Tracking"];
+const devProcessSteps = ["Wireframing", "UI/UX Design", "Development", "Testing", "Launch", "Maintenance"];
 
 const whyChooseUs = [
-  { name: "Organic Traffic", desc: "Drive high-quality, sustainable traffic without paying per click." },
-  { name: "Higher Rankings", desc: "Dominate Google search results for keywords your customers are using." },
-  { name: "Brand Authority", desc: "Establish your brand as an industry leader through top search placements." },
-  { name: "Technical Excellence", desc: "Fast, mobile-friendly, and perfectly structured websites." },
+  { name: "Custom Design", desc: "Unique interfaces tailored to your brand identity." },
+  { name: "Responsive Layouts", desc: "Flawless performance across all devices." },
+  { name: "Fast Loading", desc: "Optimized for speed to retain users and boost SEO." },
+  { name: "Conversion Focused", desc: "Strategic UX/UI design to maximize leads." },
 ];
 
 const howWeWork = [
-  { title: "Audit & Analysis", desc: "Comprehensive technical and on-page website review." },
-  { title: "Keyword Strategy", desc: "Identifying high-intent keywords to target." },
-  { title: "On-Page Optimization", desc: "Optimizing content, meta tags, and internal links." },
-  { title: "Off-Page & Links", desc: "Building high-quality backlinks and domain authority." },
+  { title: "Discovery", desc: "Understanding your business goals and audience." },
+  { title: "Wireframing", desc: "Mapping out the user journey and site structure." },
+  { title: "Development", desc: "Coding the front-end and integrating the CMS." },
+  { title: "Testing & Launch", desc: "Rigorous QA before going live." },
 ];
 
 const pricingPlans = [
   {
-    name: "Local SEO",
+    name: "Business Site",
     price: "Custom",
-    features: ["GMB Optimization", "Local Citations", "Basic On-Page", "Monthly Reporting"],
+    features: ["5-10 Pages", "Responsive Design", "Basic SEO", "Contact Forms"],
     popular: false,
   },
   {
-    name: "National SEO",
+    name: "E-Commerce",
     price: "Custom",
-    features: ["Comprehensive On-Page", "Content Strategy", "Link Building", "Technical SEO"],
+    features: ["Product Catalog", "Payment Gateway", "Inventory Management", "Advanced SEO"],
     popular: true,
   },
   {
-    name: "E-Commerce SEO",
+    name: "Custom Web App",
     price: "Custom",
-    features: ["Product Optimization", "Category Structuring", "Advanced Schema", "Scale Link Building"],
+    features: ["Complex Features", "User Portals", "API Integrations", "High Scalability"],
     popular: false,
   },
 ];
 
 const faqs = [
-  { q: "How long does SEO take to show results?", a: "Typically, significant results take 3-6 months depending on competition and baseline authority." },
-  { q: "What is the difference between organic and paid search?", a: "Organic search relies on SEO for free traffic, whereas paid search requires paying for ad placement." },
-  { q: "What is on-page SEO?", a: "Optimizing elements on your website like content, meta tags, and internal links to improve rankings." },
-  { q: "How do you build quality backlinks?", a: "Through digital PR, content marketing, guest posting, and relationship building with authoritative sites." },
-  { q: "What is technical SEO?", a: "Ensuring your website meets the technical requirements of modern search engines like speed, mobile-friendliness, and crawlability." },
-  { q: "Do you offer local SEO in Bangalore?", a: "Yes, our local SEO Bangalore services optimize your Google Business Profile and local citations to dominate regional searches." },
-  { q: "How do you measure SEO ROI?", a: "We track organic traffic growth, keyword ranking improvements, and organic lead generation via Google Analytics." },
-  { q: "What tools do you use for SEO?", a: "We utilize industry-leading tools including Google Search Console, Ahrefs, SEMrush, and Screaming Frog." },
-  { q: "Is mobile SEO important?", a: "Crucially important. With Google's mobile-first indexing, mobile SEO is mandatory for high search engine rankings." },
-  { q: "Do you implement schema markup?", a: "Yes, we implement advanced schema markup (JSON-LD) to help search engines understand your content and earn rich snippets." },
-  { q: "What are Core Web Vitals?", a: "They are speed, responsiveness, and visual stability metrics that Google uses as ranking signals." },
-  { q: "Do you handle content optimization?", a: "Absolutely. We ensure all website content is optimized for target keywords, user intent, and search engine algorithms." },
-  { q: "Can you fix Google penalties?", a: "Yes, we conduct comprehensive SEO audits to identify and resolve algorithmic or manual penalties." },
-  { q: "Why is keyword targeting important?", a: "Keyword targeting aligns your website content with the exact phrases your potential customers are searching for." },
-  { q: "Do you provide monthly SEO reports?", a: "Yes, we provide transparent, detailed monthly reports tracking rankings, traffic, and conversions." },
+  { q: "What is website design?", a: "The process of creating the visual look, layout, and user experience of a website." },
+  { q: "What is web development?", a: "The coding and technical programming that makes the website function." },
+  { q: "Do you build responsive design websites?", a: "Yes, all our websites are fully responsive and optimized for mobile devices." },
+  { q: "What is UX design vs UI design?", a: "UX (User Experience) focuses on the journey and usability; UI (User Interface) focuses on visual elements." },
+  { q: "Do you build e-commerce websites?", a: "Yes, we build robust e-commerce websites on platforms like Shopify and WooCommerce." },
+  { q: "Do you offer mobile app design?", a: "Yes, we design intuitive interfaces for native and progressive web apps." },
+  { q: "What is website optimization?", a: "Improving elements to enhance user engagement and conversion rates." },
+  { q: "How do you handle performance optimization?", a: "We optimize code, compress images, and use CDNs to ensure lightning-fast page speed." },
+  { q: "Is website security included?", a: "Yes, we implement SSL, secure hosting environments, and robust security protocols." },
+  { q: "What CMS do you use?", a: "We specialize in WordPress, Shopify, and custom React/Node.js builds." },
+  { q: "How do you improve conversion rate?", a: "Through strategic placement of CTAs, clear messaging, and frictionless checkout processes." },
+  { q: "Do you use Figma or Adobe XD?", a: "We primarily use Figma for collaborative, high-fidelity UI/UX design." },
 ];
 
 const fadeUp = {
@@ -771,16 +779,16 @@ function Reveal({ children, className, delay = 0 }) {
 
 function FaqItem({ item, isOpen, onToggle }) {
   return (
-    <motion.div className="so-faq-item" variants={fadeUp} onClick={onToggle} layout="position">
-      <div className="so-faq-question">
-        <div className="so-faq-q-left">
-          <div className="so-faq-q-icon">
+    <motion.div className="wd-faq-item" variants={fadeUp} onClick={onToggle} layout="position">
+      <div className="wd-faq-question">
+        <div className="wd-faq-q-left">
+          <div className="wd-faq-q-icon">
             <HelpCircle size={14} />
           </div>
-          <div className="so-faq-q-text">{item.q}</div>
+          <div className="wd-faq-q-text">{item.q}</div>
         </div>
         <motion.div
-          className="so-faq-chevron"
+          className="wd-faq-chevron"
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.25 }}
         >
@@ -796,7 +804,7 @@ function FaqItem({ item, isOpen, onToggle }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             style={{ overflow: "hidden" }}
           >
-            <div className="so-faq-answer-inner">{item.a}</div>
+            <div className="wd-faq-answer-inner">{item.a}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -804,7 +812,7 @@ function FaqItem({ item, isOpen, onToggle }) {
   );
 }
 
-export default function SeoServicesSection() {
+export default function WebDesigningSection() {
   const formRef = useRef(null);
   const [highlight, setHighlight] = useState(false);
   const processRef = useRef(null);
@@ -835,58 +843,14 @@ export default function SeoServicesSection() {
   };
 
   return (
-    <div className="so-root">
+    <div className="wd-root">
       <style>{styles}</style>
-      <div className="so-grid-bg" />
+      <div className="wd-grid-bg" />
 
-      {/* HERO — dark */}
-      <section className="so-section">
-        <div className="so-hero-grid">
-          <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span className="so-eyebrow" variants={fadeUp}>
-              03. SEO Services
-            </motion.span>
-
-            <motion.h1 className="so-h1" variants={fadeUp}>
-              Dominate Organic <span className="accent">Search Results</span>
-            </motion.h1>
-
-            <motion.p className="so-lede" variants={fadeUp}>
-              Stop paying for every single click. Build a sustainable, long-term
-              acquisition engine with our aggressive, white-hat SEO strategies. We don't
-              just chase vanity metrics; we target high-intent keywords that bring buyers
-              to your site.
-            </motion.p>
-
-            <motion.p className="so-lede" variants={fadeUp}>
-              From deep technical audits and on-page optimization to authoritative link
-              building and local map pack dominance, our comprehensive SEO methodology
-              ensures you outrank the competition and capture the lion's share of your
-              market.
-            </motion.p>
-
-            <motion.div className="so-btn-row" variants={fadeUp}>
-              <motion.button
-                className="so-btn-primary"
-                whileHover={{ scale: 1.035 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={glowCapabilities}
-              >
-                View Full Service
-                <ArrowRight size={16} />
-              </motion.button>
-
-              <motion.button
-                className="so-btn-outline"
-                whileHover={{ scale: 1.035, borderColor: "#FF6A1A" }}
-                whileTap={{ scale: 0.97 }}
-                onClick={scrollToForm}
-              >
-                Get SEO Audit
-              </motion.button>
-            </motion.div>
-          </motion.div>
-
+      {/* HERO */}
+      <div className="wd-theme-light">
+      <section className="wd-section">
+        <div className="wd-hero-grid">
           <motion.div
             ref={capRef}
             animate={
@@ -903,33 +867,33 @@ export default function SeoServicesSection() {
             style={{ borderRadius: 20 }}
           >
             <motion.div
-              className="so-cap-panel"
+              className="wd-cap-panel"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="so-cap-title">Core Capabilities</div>
-              <div className="so-cap-list">
+              <div className="wd-cap-title">Core Capabilities</div>
+              <div className="wd-cap-list">
                 {capabilities.map((c, i) => {
                   const Icon = c.icon;
                   return (
                     <motion.div
-                      className="so-cap-item"
+                      className="wd-cap-item"
                       key={c.name}
-                      initial={{ opacity: 0, x: 12 }}
+                      initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: 0.35 + i * 0.05 }}
+                      transition={{ duration: 0.4, delay: 0.25 + i * 0.05 }}
                       whileHover={{
                         y: -3,
                         borderColor: "rgba(255,106,26,0.55)",
-                        backgroundColor: "#25252C",
-                        boxShadow: "0 10px 22px -12px rgba(0,0,0,0.35)",
+                        backgroundColor: "#EDEDF1",
+                        boxShadow: "0 10px 22px -12px rgba(0,0,0,0.22)",
                       }}
                       onHoverStart={() => setHoveredCap(i)}
                       onHoverEnd={() => setHoveredCap(null)}
                     >
                       <motion.div
-                        className="so-cap-icon"
+                        className="wd-cap-icon"
                         animate={
                           hoveredCap === i
                             ? { backgroundColor: "#FF6A1A", color: "#0A0A0B" }
@@ -940,8 +904,8 @@ export default function SeoServicesSection() {
                         <Icon size={16} />
                       </motion.div>
                       <div>
-                        <div className="so-cap-name">{c.name}</div>
-                        <div className="so-cap-sub">Rank higher</div>
+                        <div className="wd-cap-name">{c.name}</div>
+                        <div className="wd-cap-sub">Expert solution</div>
                       </div>
                     </motion.div>
                   );
@@ -949,127 +913,170 @@ export default function SeoServicesSection() {
               </div>
             </motion.div>
           </motion.div>
+
+          <motion.div initial="hidden" animate="show" variants={stagger}>
+            <motion.span className="wd-eyebrow" variants={fadeUp}>
+              02. Web Designing
+            </motion.span>
+
+            <motion.h1 className="wd-h1" variants={fadeUp}>
+              Digital Experiences <span className="accent">That Captivate</span>
+            </motion.h1>
+
+            <motion.p className="wd-lede" variants={fadeUp}>
+              Your website is your ultimate digital storefront. A poor design costs you
+              credibility and revenue. We build blazing-fast, aesthetically stunning
+              websites meticulously optimized for user experience and conversions.
+            </motion.p>
+
+            <motion.p className="wd-lede" variants={fadeUp}>
+              Whether you need a sleek corporate portfolio, a robust e-commerce platform,
+              or a custom web application, our development team utilizes the latest tech
+              stacks to ensure your site is secure, scalable, and responsive on all devices.
+            </motion.p>
+
+            <motion.div className="wd-btn-row" variants={fadeUp}>
+              <motion.button
+                className="wd-btn-primary"
+                whileHover={{ scale: 1.035 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={glowCapabilities}
+              >
+                View Full Service
+                <ArrowRight size={16} />
+              </motion.button>
+
+              <motion.button
+                className="wd-btn-outline"
+                whileHover={{ scale: 1.035, borderColor: "#FF6A1A" }}
+                whileTap={{ scale: 0.97 }}
+                onClick={scrollToForm}
+              >
+                Request a Redesign
+              </motion.button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
+      </div>
 
-      {/* BENEFITS + SEO PROCESS — light */}
-      <div className="so-theme-light">
-      <section className="so-section">
+      {/* BENEFITS + DEVELOPMENT PROCESS */}
+      <section className="wd-section wd-benefits-wrap">
         <Reveal>
-          <motion.div className="so-section-head" variants={fadeUp}>
-            <h2 className="so-section-title">
-              The Benefits of <span className="accent">Our SEO</span>
+          <motion.div className="wd-section-head" variants={fadeUp}>
+            <h2 className="wd-section-title">
+              The Benefits of <span className="accent">Our Websites</span>
             </h2>
           </motion.div>
-          <div className="so-benefits-grid">
+          <div className="wd-benefits-grid">
             {benefits.map((b) => {
               const Icon = b.icon;
               return (
                 <motion.div
-                  className="so-benefit-card"
+                  className="wd-benefit-card"
                   key={b.name}
                   variants={fadeUp}
                   whileHover={{ y: -4, borderColor: "rgba(255,106,26,0.45)" }}
                 >
-                  <div className="so-benefit-icon">
+                  <div className="wd-benefit-icon">
                     <Icon size={18} />
                   </div>
-                  <div className="so-benefit-name">{b.name}</div>
+                  <div className="wd-benefit-name">{b.name}</div>
+                  <div className="wd-benefit-desc">{b.desc}</div>
                 </motion.div>
               );
             })}
           </div>
         </Reveal>
 
-        <div className="so-process-wrap" ref={processRef}>
+        <div className="wd-process-wrap" ref={processRef}>
           <Reveal>
-            <motion.div className="so-section-head" variants={fadeUp} style={{ marginBottom: 30 }}>
-              <h2 className="so-section-title">
-                Our SEO <span className="accent">Process</span>
+            <motion.div className="wd-section-head" variants={fadeUp} style={{ marginBottom: 30 }}>
+              <h2 className="wd-section-title">
+                Our Development <span className="accent">Process</span>
               </h2>
             </motion.div>
           </Reveal>
 
-          <div className="so-process-track">
-            <div className="so-process-line" />
+          <div className="wd-process-track">
+            <div className="wd-process-line" />
             <motion.div
-              className="so-process-line-fill"
+              className="wd-process-line-fill"
               initial={{ width: 0 }}
               animate={{ width: processInView ? "calc(100% - 56px)" : 0 }}
               transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             />
-            {seoProcessSteps.map((step, i) => (
+            {devProcessSteps.map((step, i) => (
               <motion.div
-                className="so-process-step"
+                className="wd-process-step"
                 key={step}
                 initial={{ opacity: 0, y: 16 }}
                 animate={processInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.15 + i * 0.1 }}
               >
-                <div className="so-process-num">{String(i + 1).padStart(2, "0")}</div>
-                <div className="so-process-label">{step}</div>
+                <div className="wd-process-num">{String(i + 1).padStart(2, "0")}</div>
+                <div className="wd-process-label">{step}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-      </div>
 
-      {/* WHY CHOOSE US — dark */}
-      <section className="so-section so-bento-wrap">
+      {/* WHY CHOOSE US */}
+      <div className="wd-theme-light">
+      <section className="wd-section wd-bento-wrap">
         <Reveal>
-          <motion.div className="so-section-head" variants={fadeUp}>
-            <span className="so-eyebrow">Why Choose Us</span>
-            <h2 className="so-section-title" style={{ marginTop: 10 }}>
-              Benefits of <span className="accent">Our Approach</span>
+          <motion.div className="wd-section-head" variants={fadeUp}>
+            <h2 className="wd-section-title">
+              Why Choose <span className="accent">Us</span>
             </h2>
           </motion.div>
 
-          <div className="so-bento-grid">
+          <div className="wd-bento-grid">
             {whyChooseUs.map((item) => (
               <motion.div
                 key={item.name}
-                className="so-bento-item"
+                className="wd-bento-item"
                 variants={fadeUp}
                 whileHover={{ y: -4, borderColor: "rgba(255,106,26,0.45)" }}
               >
-                <div className="so-bento-check">
+                <div className="wd-bento-check">
                   <CheckCircle2 size={16} />
                 </div>
-                <div className="so-bento-name">{item.name}</div>
-                <div className="so-bento-desc">{item.desc}</div>
+                <div className="wd-bento-name">{item.name}</div>
+                <div className="wd-bento-desc">{item.desc}</div>
               </motion.div>
             ))}
           </div>
         </Reveal>
       </section>
+      </div>
 
-      {/* HOW WE WORK — light */}
-      <div className="so-theme-light">
-      <section className="so-section so-how-wrap">
+      {/* HOW WE WORK */}
+      <section className="wd-section wd-how-wrap">
         <Reveal>
-          <motion.div className="so-section-head" variants={fadeUp} style={{ marginBottom: 8 }}>
-            <h2 className="so-section-title">
+          <motion.div className="wd-section-head" variants={fadeUp} style={{ marginBottom: 8 }}>
+            <h2 className="wd-section-title">
               How We <span className="accent">Work</span>
             </h2>
           </motion.div>
-          <motion.p className="so-section-sub" variants={fadeUp} style={{ marginBottom: 40 }}>
+          <motion.p className="wd-section-sub" variants={fadeUp} style={{ marginBottom: 40 }}>
             Our proven methodology ensures consistent results.
           </motion.p>
 
-          <div className="so-how-row">
+          <div className="wd-how-row">
             {howWeWork.map((step, i) => (
               <React.Fragment key={step.title}>
-                <motion.div className="so-how-card" variants={fadeUp}>
-                  <div className="so-how-num">{String(i + 1).padStart(2, "0")}</div>
-                  <div className="so-how-title">{step.title}</div>
-                  <div className="so-how-desc">{step.desc}</div>
+                <motion.div className="wd-how-card" variants={fadeUp}>
+                  <div className="wd-how-num">{String(i + 1).padStart(2, "0")}</div>
+                  <div className="wd-how-title">{step.title}</div>
+                  <div className="wd-how-desc">{step.desc}</div>
                 </motion.div>
 
                 {i < howWeWork.length - 1 && (
-                  <div className="so-how-connector">
+                  <div className="wd-how-connector">
                     <motion.div
-                      className="so-how-connector-fill"
+                      className="wd-how-connector-fill"
                       initial={{ width: 0 }}
                       whileInView={{ width: "100%" }}
                       viewport={{ once: true }}
@@ -1082,41 +1089,41 @@ export default function SeoServicesSection() {
           </div>
         </Reveal>
       </section>
-      </div>
 
-      {/* PRICING — dark */}
-      <section className="so-section so-pricing-wrap">
+      {/* PRICING */}
+      <div className="wd-theme-light">
+      <section className="wd-section wd-pricing-wrap">
         <Reveal>
-          <motion.div className="so-section-head" variants={fadeUp} style={{ marginBottom: 8 }}>
-            <h2 className="so-section-title">
+          <motion.div className="wd-section-head" variants={fadeUp} style={{ marginBottom: 8 }}>
+            <h2 className="wd-section-title">
               Transparent <span className="accent">Pricing</span>
             </h2>
           </motion.div>
-          <motion.p className="so-section-sub" variants={fadeUp} style={{ marginBottom: 44 }}>
+          <motion.p className="wd-section-sub" variants={fadeUp} style={{ marginBottom: 44 }}>
             Choose the plan that fits your growth goals.
           </motion.p>
 
-          <div className="so-pricing-grid">
+          <div className="wd-pricing-grid">
             {pricingPlans.map((plan) => (
               <motion.div
                 key={plan.name}
-                className={`so-price-card ${plan.popular ? "popular" : ""}`}
+                className={`wd-price-card ${plan.popular ? "popular" : ""}`}
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
               >
-                {plan.popular && <div className="so-price-badge">Popular</div>}
-                <div className="so-price-name">{plan.name}</div>
-                <div className="so-price-value">{plan.price}</div>
-                <ul className="so-price-feature-list">
+                {plan.popular && <div className="wd-price-badge">Popular</div>}
+                <div className="wd-price-name">{plan.name}</div>
+                <div className="wd-price-value">{plan.price}</div>
+                <ul className="wd-price-feature-list">
                   {plan.features.map((f) => (
-                    <li className="so-price-feature" key={f}>
+                    <li className="wd-price-feature" key={f}>
                       <Check size={16} />
                       {f}
                     </li>
                   ))}
                 </ul>
                 <motion.button
-                  className="so-price-cta"
+                  className="wd-price-cta"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={scrollToForm}
@@ -1128,18 +1135,115 @@ export default function SeoServicesSection() {
           </div>
         </Reveal>
       </section>
+      </div>
 
-      {/* FAQ — light, above the contact form */}
-      <div className="so-theme-light">
-      <section className="so-section so-faq-wrap">
+      {/* CONTACT */}
+      <section className="wd-section" ref={formRef}>
+        <motion.div
+          className="wd-contact-wrap"
+          animate={
+            highlight
+              ? { boxShadow: "0 0 0 3px rgba(255,106,26,0.55)" }
+              : { boxShadow: "0 0 0 0px rgba(255,106,26,0)" }
+          }
+          transition={{ duration: 0.5 }}
+          style={{ borderRadius: 22 }}
+        >
+          <Reveal>
+            <motion.div className="wd-form-card" variants={fadeUp}>
+              <div className="wd-form-heading">Send us a Message</div>
+
+              <div className="wd-form-row">
+                <div className="wd-field">
+                  <label>Name *</label>
+                  <input type="text" placeholder="John Doe" />
+                </div>
+                <div className="wd-field">
+                  <label>Email *</label>
+                  <input type="email" placeholder="john@example.com" />
+                </div>
+              </div>
+
+              <div className="wd-form-row">
+                <div className="wd-field">
+                  <label>Phone *</label>
+                  <input type="tel" placeholder="+91 98765 43210" />
+                </div>
+                <div className="wd-field">
+                  <label>Subject</label>
+                  <div className="wd-select-wrap">
+                    <select defaultValue="General Inquiry">
+                      <option>General Inquiry</option>
+                      <option>New Website</option>
+                      <option>Redesign</option>
+                      <option>Partnership</option>
+                    </select>
+                    <ChevronDown size={16} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="wd-field" style={{ marginBottom: 22 }}>
+                <label>Message *</label>
+                <textarea rows={5} placeholder="Tell us about your project..." />
+              </div>
+
+              <motion.button
+                className="wd-submit"
+                whileHover={{ scale: 1.015 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={(e) => e.preventDefault()}
+              >
+                <Send size={16} />
+                Send Message
+              </motion.button>
+            </motion.div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <motion.div className="wd-info-card" variants={fadeUp}>
+              <div className="wd-info-heading">Contact Information</div>
+
+              <div className="wd-info-row">
+                <div className="wd-info-icon">
+                  <MapPin size={17} />
+                </div>
+                <div>
+                  <div className="wd-info-label">Our Office</div>
+                  <div className="wd-info-value">
+                    1st floor, 1, Nyanapahalli Main Rd, Devarachiknahalli, BTM 4th Stage,
+                    Bengaluru, Karnataka 560114
+                  </div>
+                </div>
+              </div>
+
+              <div className="wd-info-row">
+                <div className="wd-info-icon">
+                  <Phone size={17} />
+                </div>
+                <div>
+                  <div className="wd-info-label">Phone</div>
+                  <div className="wd-info-value">
+                    <a href="tel:+917090170524">+91 70901 70524</a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </Reveal>
+        </motion.div>
+      </section>
+
+      {/* FAQ */}
+      <div className="wd-theme-light">
+      <section className="wd-section wd-faq-wrap">
         <Reveal>
-          <motion.div className="so-section-head" variants={fadeUp}>
-            <h2 className="so-section-title">
+          <motion.div className="wd-section-head" variants={fadeUp}>
+            <h2 className="wd-section-title">
               Frequently Asked <span className="accent">Questions</span>
             </h2>
           </motion.div>
 
-          <div className="so-faq-grid">
+          <div className="wd-faq-grid">
             {faqs.map((item, i) => (
               <FaqItem
                 key={item.q}
@@ -1152,102 +1256,6 @@ export default function SeoServicesSection() {
         </Reveal>
       </section>
       </div>
-
-      {/* CONTACT — dark, last section */}
-      <section className="so-section" ref={formRef}>
-        <motion.div
-          className="so-contact-wrap"
-          animate={
-            highlight
-              ? { boxShadow: "0 0 0 3px rgba(255,106,26,0.55)" }
-              : { boxShadow: "0 0 0 0px rgba(255,106,26,0)" }
-          }
-          transition={{ duration: 0.5 }}
-          style={{ borderRadius: 22 }}
-        >
-          <Reveal>
-            <motion.div className="so-form-card" variants={fadeUp}>
-              <div className="so-form-heading">Send us a Message</div>
-
-              <div className="so-form-row">
-                <div className="so-field">
-                  <label>Name *</label>
-                  <input type="text" placeholder="John Doe" />
-                </div>
-                <div className="so-field">
-                  <label>Email *</label>
-                  <input type="email" placeholder="john@example.com" />
-                </div>
-              </div>
-
-              <div className="so-form-row">
-                <div className="so-field">
-                  <label>Phone *</label>
-                  <input type="tel" placeholder="+91 98765 43210" />
-                </div>
-                <div className="so-field">
-                  <label>Subject</label>
-                  <div className="so-select-wrap">
-                    <select defaultValue="General Inquiry">
-                      <option>General Inquiry</option>
-                      <option>SEO Audit Request</option>
-                      <option>Local SEO</option>
-                      <option>Partnership</option>
-                    </select>
-                    <ChevronDown size={16} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="so-field" style={{ marginBottom: 22 }}>
-                <label>Message *</label>
-                <textarea rows={5} placeholder="Tell us about your project..." />
-              </div>
-
-              <motion.button
-                className="so-submit"
-                whileHover={{ scale: 1.015 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={(e) => e.preventDefault()}
-              >
-                <Send size={16} />
-                Send Message
-              </motion.button>
-            </motion.div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <motion.div className="so-info-card" variants={fadeUp}>
-              <div className="so-info-heading">Contact Information</div>
-
-              <div className="so-info-row">
-                <div className="so-info-icon">
-                  <MapPin size={17} />
-                </div>
-                <div>
-                  <div className="so-info-label">Our Office</div>
-                  <div className="so-info-value">
-                    1st floor, 1, Nyanapahalli Main Rd, Devarachiknahalli, BTM 4th Stage,
-                    Bengaluru, Karnataka 560114
-                  </div>
-                </div>
-              </div>
-
-              <div className="so-info-row">
-                <div className="so-info-icon">
-                  <Phone size={17} />
-                </div>
-                <div>
-                  <div className="so-info-label">Phone</div>
-                  <div className="so-info-value">
-                    <a href="tel:+917090170524">+91 70901 70524</a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </Reveal>
-        </motion.div>
-      </section>
     </div>
   );
 }
