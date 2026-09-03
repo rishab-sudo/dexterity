@@ -1,56 +1,100 @@
 .hm_cousel_img {
   width: 100%;
-  height: 80vh;
+  height: 75vh;
+  min-height: 520px;
+  max-height: 780px;
   object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.carousel-item {
+  position: relative;
+}
+
+.carousel-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.45) 60%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  pointer-events: none;
 }
 
 .carousel_caption {
-  bottom: 15%;
+  bottom: 12%;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .carousel_caption h3 {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .carousel_caption p {
-  font-size: 15px;
-  max-width: 500px;
+  font-size: 16px;
+  max-width: 580px;
   margin: 0 auto;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .cr_btn_div {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 15px;
+  margin-top: 18px;
 }
 
 .cr_btn {
   background-color: #ff8a00;
   color: #ffffff;
   border: none;
-  padding: 10px 22px;
+  padding: 11px 26px;
   border-radius: 6px;
   font-weight: 600;
+  font-size: 15px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .cr_btn:hover {
-  background-color: #000;
+  background-color: #000000;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
   .hm_cousel_img {
-    height: 300px;
+    height: 380px;
+    min-height: 380px;
+    object-position: center top;
+  }
+
+  .carousel_caption {
+    bottom: 8%;
   }
 
   .carousel_caption h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .carousel_caption p {
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  .cr_btn {
+    padding: 8px 18px;
+    font-size: 13px;
   }
 }

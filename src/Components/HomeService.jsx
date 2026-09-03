@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './HomeService.css';
 
 const cards = [
@@ -7,36 +8,42 @@ const cards = [
     img: require('../assets/gd-black.jpeg'),
     hoverImg: require('../assets/gd-color.jpeg'),
     title: 'Digital Marketing Strategy',
+    link: '/marketing',
     text: 'Strategic planning and growth-focused digital solutions that help businesses build a strong online presence and achieve measurable results.',
   },
   {
     img: require('../assets/seo-black.jpeg'),
     hoverImg: require('../assets/seo-color.jpeg'),
     title: 'Search Engine Optimization',
+    link: '/seo',
     text: 'Improve visibility, attract qualified traffic, and increase long-term search performance with effective SEO strategies.',
   },
   {
     img: require('../assets/smm-black.jpeg'),
     hoverImg: require('../assets/smm-color.jpeg'),
     title: 'Social Media Marketing',
+    link: '/marketing',
     text: 'Build brand awareness, engage your audience, and grow your community through creative and performance-driven social media campaigns.',
   },
   {
     img: require('../assets/pm-black.jpeg'),
     hoverImg: require('../assets/pm-color.jpeg'),
     title: 'Performance Marketing',
+    link: '/performance',
     text: 'Generate high-quality leads and maximise ROI through targeted paid advertising campaigns across search and social platforms.',
   },
   {
     img: require('../assets/web-black.jpeg'),
     hoverImg: require('../assets/web-color.jpeg'),
     title: 'Web Design & Development',
+    link: '/digital',
     text: 'Create fast, responsive, and conversion-focused websites that deliver seamless user experiences across all devices.',
   },
   {
     img: require('../assets/wm-black.jpeg'),
     hoverImg: require('../assets/wm-color.jpeg'),
     title: 'Creative & Brand Communication',
+    link: '/creative',
     text: 'Strengthen your brand identity with impactful graphic design, creative communication, and customer engagement solutions.',
   },
 ];
@@ -71,9 +78,9 @@ const HomeService = () => {
                   <h3>{card.title}</h3>
                   <p>{card.text}</p>
 
-                  <a href='/' className='industry-btn'>
+                  <Link to={card.link} className='industry-btn'>
                     Explore
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

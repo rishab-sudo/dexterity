@@ -598,21 +598,13 @@ const whyChooseUs = [
   { name: "Customer Service", desc: "Directly communicate with customers and resolve issues quickly." },
   { name: "Targeted Advertising", desc: "Laser-focused ads based on demographics, interests, and behaviors." },
   { name: "Thought Leadership", desc: "Establish your brand as the industry authority." },
-  {
-    name: "SEO Growth",
-    desc: "More content means more keywords and more search traffic.",
-    size: "wide",
-  },
   { name: "Lead Nurturing", desc: "Educate prospects until they are ready to buy." },
-  { name: "Cost Effective", desc: "Content marketing generates 3x as many leads as outbound marketing." },
   { name: "Lower CPA", desc: "Get more customers from your existing traffic spend." },
   {
     name: "Higher Revenue",
     desc: "Direct impact on the bottom line without buying more ads.",
     size: "wide",
   },
-  { name: "Better UX", desc: "A smoother experience builds brand loyalty and trust." },
-  { name: "Data Backed", desc: "Decisions based on user data, not opinions." },
 ];
 
 const howWeWork = [
@@ -994,8 +986,7 @@ export default function DigitalMarketingSection() {
                 <div>
                   <div className="dm-info-label">Our Office</div>
                   <div className="dm-info-value">
-                    1st floor, 1, Nyanapahalli Main Rd, Devarachiknahalli, BTM 4th Stage,
-                    Bengaluru, Karnataka 560114
+                    11 Block, Rajendra Nagar, Bareilly, Uttar Pradesh, India
                   </div>
                 </div>
               </div>
@@ -1007,7 +998,19 @@ export default function DigitalMarketingSection() {
                 <div>
                   <div className="dm-info-label">Phone</div>
                   <div className="dm-info-value">
-                    <a href="tel:+917090170524">+91 70901 70524</a>
+                    <a href="tel:+917055255255">+91 7055255255</a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="dm-info-row">
+                <div className="dm-info-icon">
+                  <Mail size={17} />
+                </div>
+                <div>
+                  <div className="dm-info-label">Email</div>
+                  <div className="dm-info-value">
+                    <a href="mailto:info@dexterityworld.com">info@dexterityworld.com</a>
                   </div>
                 </div>
               </div>

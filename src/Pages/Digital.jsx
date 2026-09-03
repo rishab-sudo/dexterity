@@ -17,6 +17,7 @@ import {
   ArrowRight,
   MapPin,
   Phone,
+  Mail,
   Send,
   ChevronDown,
   CheckCircle2,
@@ -703,7 +704,6 @@ const devProcessSteps = ["Wireframing", "UI/UX Design", "Development", "Testing"
 const whyChooseUs = [
   { name: "Custom Design", desc: "Unique interfaces tailored to your brand identity." },
   { name: "Responsive Layouts", desc: "Flawless performance across all devices." },
-  { name: "Fast Loading", desc: "Optimized for speed to retain users and boost SEO." },
   { name: "Conversion Focused", desc: "Strategic UX/UI design to maximize leads." },
 ];
 
@@ -916,7 +916,7 @@ export default function WebDesigningSection() {
 
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.span className="wd-eyebrow" variants={fadeUp}>
-              02. Web Designing
+              05. Web Designing
             </motion.span>
 
             <motion.h1 className="wd-h1" variants={fadeUp}>
@@ -1211,8 +1211,7 @@ export default function WebDesigningSection() {
                 <div>
                   <div className="wd-info-label">Our Office</div>
                   <div className="wd-info-value">
-                    1st floor, 1, Nyanapahalli Main Rd, Devarachiknahalli, BTM 4th Stage,
-                    Bengaluru, Karnataka 560114
+                    11 Block, Rajendra Nagar, Bareilly, Uttar Pradesh, India
                   </div>
                 </div>
               </div>
@@ -1224,7 +1223,19 @@ export default function WebDesigningSection() {
                 <div>
                   <div className="wd-info-label">Phone</div>
                   <div className="wd-info-value">
-                    <a href="tel:+917090170524">+91 70901 70524</a>
+                    <a href="tel:+917055255255">+91 7055255255</a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="wd-info-row">
+                <div className="wd-info-icon">
+                  <Mail size={17} />
+                </div>
+                <div>
+                  <div className="wd-info-label">Email</div>
+                  <div className="wd-info-value">
+                    <a href="mailto:info@dexterityworld.com">info@dexterityworld.com</a>
                   </div>
                 </div>
               </div>

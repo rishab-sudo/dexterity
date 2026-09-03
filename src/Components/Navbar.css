@@ -58,12 +58,24 @@
   border-radius: 8px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7) !important;
   padding: 8px 0 !important;
-  margin-top: 6px !important;
+  margin-top: 4px !important;
   min-width: 210px !important;
   display: none;
   animation: dropdownFadeIn 0.2s ease forwards;
 }
 
+/* Invisible bridge so cursor never leaves hover zone between button and dropdown */
+.custom-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: transparent;
+}
+
+.custom-dropdown:hover .custom-dropdown-menu,
 .custom-dropdown.show .custom-dropdown-menu,
 .custom-dropdown-menu.show {
   display: block !important;

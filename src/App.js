@@ -10,6 +10,8 @@ import Contact from "./Pages/Contact.js";
 import SEO from "./Pages/SEO.jsx";
 import Digital from "./Pages/Digital.jsx";
 import Marketing from "./Pages/Marketing.jsx";
+import Creative from "./Pages/Creative.jsx";
+import Performance from "./Pages/Performance.jsx";
 import './App.css';
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
           <Route path="/digital" element={<Digital />} />
           <Route path="/website-designing" element={<Digital />} />
           <Route path="/marketing" element={<Marketing />} />
+          <Route path="/creative" element={<Creative />} />
+          <Route path="/performance" element={<Performance />} />
           <Route path="/service" element={<Digital />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />

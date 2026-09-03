@@ -8,45 +8,50 @@
 
 .audit-section {
   background: var(--white);
-  padding: 80px 20px;
+  padding: 60px 20px;
 }
 
 .audit-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-radius: 26px;
-  overflow: hidden;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  grid-template-columns: 1.05fr 0.95fr;
+  border-radius: 22px;
+  overflow: visible;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
 }
 
 .audit-form-side {
   background: var(--orange);
-  padding: 60px 50px;
+  padding: 44px 42px;
+  border-radius: 22px 0 0 22px;
 }
 
 .audit-content-side {
   background: var(--light);
-  padding: 60px 50px;
+  padding: 44px 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0 22px 22px 0;
 }
 
 .audit-mini-title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--black);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .audit-mini-title.dark {
-  color: #444;
+  color: #555;
 }
 
 .audit-line {
-  width: 70px;
+  width: 55px;
   height: 3px;
   background: var(--black);
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 }
 
 .audit-line.dark {
@@ -55,46 +60,100 @@
 
 .audit-heading,
 .audit-content-heading {
-
   color: var(--black);
-  margin-bottom: 35px;
-  
+  margin-bottom: 20px;
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+/* Falling pills row — now sits below the paragraph copy, at the
+   bottom of the content card. Spread across the full width of the
+   card, single line, so it reaches all the way to the right edge
+   instead of clumping on the left and wrapping. */
+.audit-pills-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  margin: 18px 0 4px;
+}
+
+.audit-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  white-space: nowrap;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.76rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(20, 20, 43, 0.12);
+}
+
+@media (max-width: 576px) {
+  .audit-pills-row {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .audit-pill {
+    flex: 0 1 auto;
+  }
 }
 
 .audit-form {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 14px;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 14px;
 }
 
 .form-group label {
   display: block;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   color: var(--black);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .form-group input,
-.form-group select,
+.form-group select {
+  width: 100%;
+  padding: 9px 14px;
+  height: 42px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 14px;
+  color: var(--black);
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
 .form-group textarea {
   width: 100%;
-  padding: 16px 18px;
+  padding: 10px 14px;
+  min-height: 68px;
+  height: 68px;
   border: 1px solid transparent;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.92);
-  font-size: 15px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 14px;
   color: var(--black);
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   box-sizing: border-box;
+  resize: vertical;
 }
 
 .form-group input:focus,
@@ -103,90 +162,57 @@
   outline: none;
   border-color: var(--black);
   background: var(--white);
-  box-shadow: 0 0 0 4px rgba(11, 11, 11, 0.08);
+  box-shadow: 0 0 0 3px rgba(11, 11, 11, 0.1);
 }
 
 .audit-btn {
   background: var(--black);
   color: var(--white);
   border: none;
-  padding: 16px 32px;
+  padding: 11px 28px;
   border-radius: 999px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   align-self: flex-start;
+  margin-top: 4px;
 }
 
 .audit-btn:hover {
   background: #1a1a1a;
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
 }
 
 .audit-content-side h4 {
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--orange);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .audit-content-side p {
-  font-size: 16px;
-  line-height: 1.85;
+  font-size: 14.5px;
+  line-height: 1.7;
   color: #444;
-  margin-bottom: 22px;
-}
-
-.audit-stats {
-  display: flex;
-  gap: 30px;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-
-.audit-stats h3 {
-  font-size: 34px;
-  font-weight: 800;
-  color: var(--orange);
-  margin-bottom: 6px;
-}
-
-.audit-stats span {
-  font-size: 14px;
-  color: #555;
-  font-weight: 600;
+  margin-bottom: 14px;
 }
 
 @media (max-width: 992px) {
   .audit-container {
     grid-template-columns: 1fr;
-  }
-
-  .audit-heading,
-  .audit-content-heading {
-    /* font-size: 38px; */
+    max-width: 650px;
   }
 }
 
 @media (max-width: 576px) {
   .audit-form-side,
   .audit-content-side {
-    padding: 40px 24px;
+    padding: 30px 20px;
   }
 
   .form-grid {
     grid-template-columns: 1fr;
-  }
-
-  .audit-heading,
-  .audit-content-heading {
-    /* font-size: 30px; */
-  }
-
-  .audit-stats {
-    flex-direction: column;
-    gap: 18px;
   }
 }

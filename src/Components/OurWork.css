@@ -1,0 +1,853 @@
+/* =========================================================
+   OUR WORK SECTION
+========================================================= */
+
+.our-work-section {
+  width: 100%;
+  min-height: 620px;
+  padding: 55px 20px 70px;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255, 255, 255, 0.42) 0%,
+      rgba(255, 255, 255, 0) 48%
+    ),
+    linear-gradient(
+      110deg,
+      #f3dff0 0%,
+      #e8ddf8 48%,
+      #dcdffd 100%
+    );
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.our-work-container {
+  width: 100%;
+
+  margin: 0 auto;
+  position: relative;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.our-work-heading {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 20;
+  margin-bottom: 35px;
+}
+
+.our-work-eyebrow {
+  display: block;
+  margin-bottom: 7px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  color: #8c82c9;
+}
+
+.our-work-heading h2 {
+  position: relative;
+  display: inline-block;
+
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(25px, 3vw, 38px);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+
+  color: #24243a;
+}
+
+.heading-red {
+  color: #ed251d;
+}
+
+.heading-dark {
+  color: #28283a;
+}
+
+
+/* Small decorative underline */
+
+.our-work-heading h2::after {
+  content: "";
+  position: absolute;
+
+  width: 72px;
+  height: 7px;
+
+  right: -2px;
+  bottom: -7px;
+
+  border-radius: 50%;
+
+  border-top: 3px solid #ed5966;
+  transform: rotate(-3deg);
+
+  opacity: 0.8;
+}
+
+
+/* =========================================================
+   SLIDER
+========================================================= */
+
+.our-work-slider {
+  width: 100%;
+  height: 350px;
+
+  position: relative;
+
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+
+  cursor: grab;
+
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+.our-work-slider:active {
+  cursor: grabbing;
+}
+
+
+/* =========================================================
+   SLIDER STAGE
+========================================================= */
+
+.our-work-slider-stage {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+}
+
+
+/* =========================================================
+   CARD BASE
+========================================================= */
+
+.our-work-card {
+  width: 250px;
+  height: 285px;
+
+  position: absolute;
+
+  top: 30px;
+  left: 50%;
+
+  border-radius: 10px;
+
+  transform-style: preserve-3d;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.45s ease,
+    filter 0.45s ease,
+    width 0.45s ease,
+    height 0.45s ease;
+
+  box-shadow:
+    0 16px 35px rgba(44, 37, 82, 0.13);
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  background: #eeeeee;
+
+  transform-origin: center center;
+}
+
+
+/* =========================================================
+   CENTER CARD
+========================================================= */
+
+.our-work-card.is-center {
+  z-index: 10;
+
+  width: 220px;
+  height: 290px;
+
+  transform:
+    translateX(-50%)
+    translateZ(100px)
+    rotateY(0deg)
+    scale(1.02);
+
+  opacity: 1;
+
+  filter: none;
+}
+
+
+/* =========================================================
+   LEFT CARD
+========================================================= */
+
+.our-work-card.is-left {
+  z-index: 7;
+
+  transform:
+    translateX(calc(-50% - 220px))
+    translateZ(10px)
+    rotateY(13deg)
+    scale(0.96);
+
+  opacity: 0.98;
+}
+
+
+/* =========================================================
+   RIGHT CARD
+========================================================= */
+
+.our-work-card.is-right {
+  z-index: 7;
+
+  transform:
+    translateX(calc(-50% + 220px))
+    translateZ(10px)
+    rotateY(-13deg)
+    scale(0.96);
+
+  opacity: 0.98;
+}
+
+
+/* =========================================================
+   FAR LEFT CARD
+========================================================= */
+
+.our-work-card.is-far-left {
+  z-index: 4;
+
+  transform:
+    translateX(calc(-50% - 395px))
+    translateZ(-70px)
+    rotateY(20deg)
+    scale(0.88);
+
+  opacity: 0.9;
+
+  filter: brightness(0.98);
+}
+
+
+/* =========================================================
+   FAR RIGHT CARD
+========================================================= */
+
+.our-work-card.is-far-right {
+  z-index: 4;
+
+  transform:
+    translateX(calc(-50% + 395px))
+    translateZ(-70px)
+    rotateY(-20deg)
+    scale(0.88);
+
+  opacity: 0.9;
+
+  filter: brightness(0.98);
+}
+
+
+/* =========================================================
+   HIDDEN
+========================================================= */
+
+.our-work-card.is-hidden {
+  z-index: 0;
+
+  transform:
+    translateX(-50%)
+    translateZ(-250px)
+    scale(0.5);
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CARD INNER
+========================================================= */
+
+.our-work-card-inner {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(250, 250, 250, 1) 0%,
+      rgba(239, 239, 239, 0.98) 45%,
+      rgba(211, 211, 211, 0.96) 100%
+    );
+}
+
+
+/* =========================================================
+   CARD BACKGROUND / BUILDINGS
+========================================================= */
+
+.our-work-card-bg {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 62%;
+
+  opacity: 0.35;
+
+  filter: blur(0.3px);
+}
+
+
+/* Building shapes */
+
+.building {
+  position: absolute;
+  bottom: -2px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(180, 180, 180, 0.1),
+      rgba(130, 130, 130, 0.45)
+    );
+
+  border-radius: 3px 3px 0 0;
+}
+
+
+/* Windows */
+
+.building::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 12px 7px 8px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.28) 0px,
+      rgba(255, 255, 255, 0.28) 3px,
+      transparent 3px,
+      transparent 9px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.22) 0px,
+      rgba(255, 255, 255, 0.22) 3px,
+      transparent 3px,
+      transparent 11px
+    );
+}
+
+
+.building-one {
+  width: 30%;
+  height: 72%;
+  left: -3%;
+}
+
+.building-two {
+  width: 28%;
+  height: 88%;
+  left: 19%;
+}
+
+.building-three {
+  width: 35%;
+  height: 60%;
+  left: 43%;
+}
+
+.building-four {
+  width: 27%;
+  height: 82%;
+  right: 13%;
+}
+
+.building-five {
+  width: 22%;
+  height: 67%;
+  right: -3%;
+}
+
+
+/* =========================================================
+   CARD OVERLAY
+========================================================= */
+
+.our-work-card-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.12) 48%,
+      rgba(255, 255, 255, 0.68) 100%
+    );
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LOGOS
+========================================================= */
+
+.our-work-logo {
+  position: absolute;
+
+  left: 50%;
+  top: 34%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 5;
+
+  white-space: nowrap;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  text-align: center;
+
+  font-weight: 700;
+}
+
+
+/* Blue B */
+
+.logo-blue {
+  font-size: 52px;
+  font-weight: 300;
+
+  font-family: Georgia, serif;
+
+  color: #3f69e9;
+
+  text-shadow:
+    2px 0 #9c39d5,
+    -1px 0 #2d54db;
+}
+
+
+/* RDI */
+
+.logo-rdi {
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 30px;
+
+  font-weight: 500;
+
+  color: #69606c;
+
+  letter-spacing: -2px;
+}
+
+
+/* RedBus */
+
+.logo-redbus {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 20px;
+  font-weight: 600;
+
+  color: #dc383e;
+}
+
+.redbus-icon {
+  font-size: 24px;
+  transform: rotate(-8deg);
+}
+
+
+/* SOBHA */
+
+.logo-sobha {
+  padding: 10px 8px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 14px;
+
+  letter-spacing: 1px;
+
+  color: #444;
+
+  background: rgba(247, 211, 87, 0.88);
+}
+
+
+/* TONGGUY */
+
+.logo-tongguy {
+  font-family: Impact, Arial Black, sans-serif;
+
+  font-size: 13px;
+
+  letter-spacing: -0.5px;
+
+  color: #222;
+
+  transform:
+    translate(-50%, -50%)
+    scaleX(0.9);
+}
+
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.our-work-dots {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: -2px;
+
+  position: relative;
+  z-index: 20;
+}
+
+.our-work-dot {
+  width: 6px;
+  height: 6px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(70, 64, 110, 0.25);
+
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.our-work-dot:hover {
+  transform: scale(1.2);
+}
+
+.our-work-dot.active {
+  width: 22px;
+
+  border-radius: 10px;
+
+  background: #ed251d;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .our-work-section {
+    min-height: 570px;
+    padding-top: 45px;
+  }
+
+  .our-work-slider {
+    height: 330px;
+  }
+
+  .our-work-card {
+    width: 190px;
+    height: 260px;
+  }
+
+  .our-work-card.is-center {
+    width: 205px;
+    height: 270px;
+  }
+
+  .our-work-card.is-left {
+    transform:
+      translateX(calc(-50% - 175px))
+      translateZ(10px)
+      rotateY(14deg)
+      scale(0.93);
+  }
+
+  .our-work-card.is-right {
+    transform:
+      translateX(calc(-50% + 175px))
+      translateZ(10px)
+      rotateY(-14deg)
+      scale(0.93);
+  }
+
+  .our-work-card.is-far-left {
+    transform:
+      translateX(calc(-50% - 320px))
+      translateZ(-60px)
+      rotateY(19deg)
+      scale(0.82);
+  }
+
+  .our-work-card.is-far-right {
+    transform:
+      translateX(calc(-50% + 320px))
+      translateZ(-60px)
+      rotateY(-19deg)
+      scale(0.82);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .our-work-section {
+    min-height: 530px;
+
+    padding:
+      38px
+      10px
+      55px;
+  }
+
+  .our-work-heading {
+    margin-bottom: 15px;
+  }
+
+  .our-work-eyebrow {
+    font-size: 7px;
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+
+  .our-work-heading h2 {
+    font-size: clamp(22px, 7vw, 30px);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .our-work-heading h2::after {
+    width: 50px;
+    height: 5px;
+    bottom: -5px;
+  }
+
+  .our-work-slider {
+    height: 340px;
+
+    perspective: 1000px;
+  }
+
+  .our-work-card {
+    width: 165px;
+    height: 245px;
+
+    top: 38px;
+  }
+
+  .our-work-card.is-center {
+    width: 180px;
+    height: 260px;
+
+    transform:
+      translateX(-50%)
+      translateZ(80px)
+      rotateY(0deg)
+      scale(1);
+  }
+
+  .our-work-card.is-left {
+    transform:
+      translateX(calc(-50% - 125px))
+      translateZ(0)
+      rotateY(18deg)
+      scale(0.88);
+  }
+
+  .our-work-card.is-right {
+    transform:
+      translateX(calc(-50% + 125px))
+      translateZ(0)
+      rotateY(-18deg)
+      scale(0.88);
+  }
+
+  .our-work-card.is-far-left {
+    transform:
+      translateX(calc(-50% - 225px))
+      translateZ(-70px)
+      rotateY(25deg)
+      scale(0.72);
+  }
+
+  .our-work-card.is-far-right {
+    transform:
+      translateX(calc(-50% + 225px))
+      translateZ(-70px)
+      rotateY(-25deg)
+      scale(0.72);
+  }
+
+  .our-work-logo {
+    top: 35%;
+  }
+
+  .logo-blue {
+    font-size: 43px;
+  }
+
+  .logo-rdi {
+    font-size: 25px;
+  }
+
+  .logo-redbus {
+    font-size: 17px;
+  }
+
+  .logo-sobha {
+    font-size: 11px;
+    padding: 8px 6px;
+  }
+
+  .logo-tongguy {
+    font-size: 10px;
+  }
+
+  .our-work-dots {
+    margin-top: -4px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .our-work-section {
+    min-height: 500px;
+  }
+
+  .our-work-slider {
+    height: 320px;
+  }
+
+  .our-work-card {
+    width: 150px;
+    height: 225px;
+  }
+
+  .our-work-card.is-center {
+    width: 165px;
+    height: 240px;
+  }
+
+  .our-work-card.is-left {
+    transform:
+      translateX(calc(-50% - 108px))
+      translateZ(0)
+      rotateY(19deg)
+      scale(0.84);
+  }
+
+  .our-work-card.is-right {
+    transform:
+      translateX(calc(-50% + 108px))
+      translateZ(0)
+      rotateY(-19deg)
+      scale(0.84);
+  }
+
+  .our-work-card.is-far-left {
+    transform:
+      translateX(calc(-50% - 190px))
+      translateZ(-70px)
+      rotateY(25deg)
+      scale(0.68);
+  }
+
+  .our-work-card.is-far-right {
+    transform:
+      translateX(calc(-50% + 190px))
+      translateZ(-70px)
+      rotateY(-25deg)
+      scale(0.68);
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .our-work-card,
+  .our-work-dot {
+    transition: none;
+  }
+}

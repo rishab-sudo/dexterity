@@ -6,16 +6,31 @@ const SERVICE_LINKS = [
   { label: "SEO", href: "/seo" },
   { label: "Website Designing", href: "/digital" },
   { label: "Marketing", href: "/marketing" },
+  { label: "Creative & Branding", href: "/creative" },
+  { label: "Performance Marketing", href: "/performance" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const timeoutRef = useRef(null);
   const location = useLocation();
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 180);
+  };
 
   const openMenu = () => setIsOpen(true);
   const closeMenu = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setIsOpen(false);
     setDropdownOpen(false);
   };
@@ -30,6 +45,7 @@ const Navbar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
 
@@ -71,8 +87,8 @@ const Navbar = () => {
               <li
                 className={`nav-item dropdown custom-dropdown ${dropdownOpen ? 'show' : ''}`}
                 ref={dropdownRef}
-                onMouseEnter={() => setDropdownOpen(true)}
-                onMouseLeave={() => setDropdownOpen(false)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
                 <button
                   className={`nav-link dropdown-toggle nav_text border-0 bg-transparent ${isServiceActive ? 'active-service' : ''}`}

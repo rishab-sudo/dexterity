@@ -15,6 +15,7 @@ import {
   ArrowRight,
   MapPin,
   Phone,
+  Mail,
   Send,
   ChevronDown,
   CheckCircle2,
@@ -81,7 +82,7 @@ const styles = `
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 30px 0 30px;
   }
 
   .so-eyebrow {
@@ -695,7 +696,6 @@ const whyChooseUs = [
   { name: "Organic Traffic", desc: "Drive high-quality, sustainable traffic without paying per click." },
   { name: "Higher Rankings", desc: "Dominate Google search results for keywords your customers are using." },
   { name: "Brand Authority", desc: "Establish your brand as an industry leader through top search placements." },
-  { name: "Technical Excellence", desc: "Fast, mobile-friendly, and perfectly structured websites." },
 ];
 
 const howWeWork = [
@@ -846,7 +846,7 @@ export default function SeoServicesSection() {
         <div className="so-hero-grid">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.span className="so-eyebrow" variants={fadeUp}>
-              03. SEO Services
+              02. SEO Services
             </motion.span>
 
             <motion.h1 className="so-h1" variants={fadeUp}>
@@ -1228,8 +1228,7 @@ export default function SeoServicesSection() {
                 <div>
                   <div className="so-info-label">Our Office</div>
                   <div className="so-info-value">
-                    1st floor, 1, Nyanapahalli Main Rd, Devarachiknahalli, BTM 4th Stage,
-                    Bengaluru, Karnataka 560114
+                    11 Block, Rajendra Nagar, Bareilly, Uttar Pradesh, India
                   </div>
                 </div>
               </div>
@@ -1241,7 +1240,19 @@ export default function SeoServicesSection() {
                 <div>
                   <div className="so-info-label">Phone</div>
                   <div className="so-info-value">
-                    <a href="tel:+917090170524">+91 70901 70524</a>
+                    <a href="tel:+917055255255">+91 7055255255</a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="so-info-row">
+                <div className="so-info-icon">
+                  <Mail size={17} />
+                </div>
+                <div>
+                  <div className="so-info-label">Email</div>
+                  <div className="so-info-value">
+                    <a href="mailto:info@dexterityworld.com">info@dexterityworld.com</a>
                   </div>
                 </div>
               </div>

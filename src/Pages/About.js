@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Container } from "react-bootstrap"
+import { Link } from 'react-router-dom'
 import "./About.css"
 import PageBanner from '../Components/PageBanner'
+import Falling from '../Components/Falling'
+import OurWork from '../Components/OurWork'
 
 // Swap these for your real numbers
 const stats = [
@@ -92,22 +95,25 @@ const About = () => {
         <div className='habout_text_div'>
           <h6 className='page_heading eyebrow-text'>About Us</h6>
           <h5 className='section-heading'>
-            About HighTech Agency And Its<br /> Innovative IT Solutions
+            About DexterityWorld And Its<br /> Innovative IT Solutions
           </h5>
           <p className='section-para'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur
-            quis purus ut interdum. Pellentesque aliquam dolor eget urna ultricies
-            tincidunt. Nam volutpat libero sit amet leo cursus, ac viverra eros
-            tristique. Morbi quis quam mi. Cras vel gravida eros.
+            At DexterityWorld, we empower ambitious brands to thrive in the digital age. 
+            We engineer high-performance web applications, drive organic search rankings through advanced SEO, 
+            and design conversion-focused marketing campaigns tailored to your business goals.
           </p>
           <p className='section-para'>
-            Pellentesque aliquam dolor eget urna ultricies tincidunt. Nam volutpat
-            libero sit amet leo cursus, ac viverra eros tristique. Morbi quis quam
-            mi. Cras vel gravida eros. Proin scelerisque quam nec elementum viverra.
+            With a team of seasoned strategists, developers, and creative designers, we turn complex technical 
+            challenges into scalable, profitable digital experiences that deliver real, measurable ROI.
           </p>
-          <button className='page_btn habout_btn'>More Details</button>
+          <Link to='/contact' className='page_btn habout_btn' style={{ textDecoration: 'none', display: 'inline-block' }}>
+            Contact Us
+          </Link>
         </div>
       </Container>
+
+      <Falling/>
+
 
       {/* ---------- Stats / experience strip ---------- */}
       <div className='about_stats_section'>
@@ -129,6 +135,8 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <OurWork/>
 
     </Container>
     </>
