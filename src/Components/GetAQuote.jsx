@@ -105,7 +105,7 @@ const LeadAuditSection = () => {
           <p className='audit-mini-title'>Let’s grow your business together</p>
           <div className='audit-line' />
 
-          <h2 className='audit-heading'>
+          <h2 className='audit-heading section-heading'>
             Get a Free SEO & Digital Marketing Audit
           </h2>
 
@@ -195,11 +195,11 @@ const LeadAuditSection = () => {
           </p>
           <div className='audit-line dark' />
 
-          <h2 className='audit-content-heading'>
+          <h2 className='audit-content-heading section-heading'>
             Your Growth-Focused Digital Marketing Partner
           </h2>
 
-          <h4>SEO • Google Ads • Social Media • Web Solutions</h4>
+          <h4 className='section-subHeading'>SEO • Google Ads • Social Media • Web Solutions</h4>
 
           <p>
             We help brands increase their visibility, generate qualified

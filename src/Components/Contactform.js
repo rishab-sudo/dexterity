@@ -108,7 +108,7 @@ const Cf = () => {
   return (
     <div className="contact-form-wrapper">
       <form ref={form} onSubmit={handleSubmit} className="form-card">
-        <h2 className="form_heading">Get a Quote</h2>
+        <h2 className="form_heading section-heading">Get a Quote</h2>
 
         <div className="form-grid">
           <div className="field_errorbox">

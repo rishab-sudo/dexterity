@@ -43,8 +43,8 @@ const Testimonials = () => {
     <Container fluid className='client_fluid'>
       <Container className='client_container'>
         <div className='clinet_heading_wrapper'>
-          <p className='page_subheading'>What <span style={{ color: '#1842b6' }}>OUR CLIENTS</span></p>
-          <p className='page_subheading' style={{ marginTop: '-15px' }}>Are Saying</p>
+          <p className='section-heading'>What <span style={{ color: '#1842b6' }}>OUR CLIENTS</span></p>
+          <p className='section-heading' style={{ marginTop: '-15px' }}>Are Saying</p>
         </div>
 
         <Slider {...settings} className='slider'>

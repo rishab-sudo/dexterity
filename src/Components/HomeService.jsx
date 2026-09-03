@@ -46,13 +46,13 @@ const HomeService = () => {
     <section className='industry-services-section'>
       <Container fluid className='g-0'>
         <div className='industry-header text-center'>
-          <span className='about-tag'>OUR SERVICES</span>
-          <h2 className='pageheading text-white'>
+          <span className='about-tag eyebrow-text'>OUR SERVICES</span>
+          <h2 className='section-heading text-white'>
             Complete Digital Growth Solutions
           </h2>
-          <p className='pagedescription text-white-50'>
+          <p className='section-subHeading text-white-50'>
             From strategy and SEO to paid advertising, web development, and
-            creative branding — everything your business needs to grow online.
+            creative branding-everything your business needs to grow online.
           </p>
         </div>
 

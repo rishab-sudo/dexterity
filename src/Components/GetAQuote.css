@@ -55,11 +55,10 @@
 
 .audit-heading,
 .audit-content-heading {
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 1.15;
+
   color: var(--black);
   margin-bottom: 35px;
+  
 }
 
 .audit-form {
@@ -167,7 +166,7 @@
 
   .audit-heading,
   .audit-content-heading {
-    font-size: 38px;
+    /* font-size: 38px; */
   }
 }
 
@@ -183,7 +182,7 @@
 
   .audit-heading,
   .audit-content-heading {
-    font-size: 30px;
+    /* font-size: 30px; */
   }
 
   .audit-stats {

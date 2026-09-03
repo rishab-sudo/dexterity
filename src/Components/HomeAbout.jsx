@@ -22,20 +22,20 @@ const HomeAbout = () => {
 
         {/* Content Side */}
         <div className='about-content'>
-          <span className='about-tag'>ABOUT US</span>
+          <span className='about-tag eyebrow-text'>ABOUT US</span>
 
-          <h2 className='pageheading'>
+          <h2 className=' section-heading'>
             Award-Winning Digital <br />
             Marketing & IT Solutions
           </h2>
 
-          <p className='pagedescription'>
+          <p className=' section-para'>
             HighTech Agency helps businesses grow through modern web
             development, branding, SEO, performance marketing, and scalable
             digital solutions designed to deliver measurable business impact.
           </p>
 
-          <p className='pagedescription'>
+          <p className=' section-para'>
             We combine strategy, creativity, and technology to build fast,
             reliable, and conversion-focused products that are easy to manage
             and built for long-term growth.

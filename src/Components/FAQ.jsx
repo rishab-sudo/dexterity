@@ -56,13 +56,13 @@ const HomeFaq = () => {
       <div className="dw-faq-overlay">
         <div className="container">
           <div className="dw-faq-header text-center">
-            <span className="dw-faq-tag">FREQUENTLY ASKED QUESTIONS</span>
+            <span className="dw-faq-tag eyebrow-text">FREQUENTLY ASKED QUESTIONS</span>
 
-            <h2 className="pageheading text-white">
+            <h2 className="section-heading text-white">
               DexterityWorld Digital Marketing FAQs
             </h2>
 
-            <p className="pagedescription text-white-50">
+            <p className="section-subHeading text-white-50">
               Everything you need to know about our SEO, advertising, website
               development, and digital marketing services.
             </p>
