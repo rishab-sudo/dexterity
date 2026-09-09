@@ -1,84 +1,248 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaFacebookF } from "react-icons/fa";
+
+import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { FiInstagram } from "react-icons/fi";
 import { RiWhatsappFill } from "react-icons/ri";
-import { FaLinkedinIn } from "react-icons/fa";
+
 import "./Footer.css";
 
 const Footer = () => {
     return (
-        <Container fluid className='footer_fluid'>
-            <Container className="text-white">
-                <Row className="d-flex justify-content-start align-items-start text-start" >
-                    
-                    <Col className="footer_col" sm={8} md={4} lg={3} >
-                        <div className="">
-                            <p className='footer_headings'>DexterityWorld</p>
-                            <p className=''>
-                                Delivering high-impact digital solutions, custom web development, SEO strategies, and performance marketing to help your business scale and succeed online.
+        <Container fluid className="footer_fluid">
+            <Container className="text-white footer_container">
+
+                <Row className="footer_row">
+
+                    {/* ================= BRAND / ABOUT ================= */}
+                    <Col
+                        className="footer_col footer_brand"
+                        sm={12}
+                        md={6}
+                        lg={3}
+                    >
+                        <div className="footer_section">
+
+                            <p className="footer_headings">
+                                DexterityWorld
                             </p>
-                            <div className='footer_icon_div'>
-                                <a style={{textDecoration:"none"}} href="https://www.facebook.com/jmeduinnovationworld" target="_blank" rel="noopener noreferrer"><FaFacebookF className='header_icon' /></a>
-                                <a style={{textDecoration:"none"}} href="https://www.instagram.com/jm_edu_innovation/" target="_blank" rel="noopener noreferrer"><FiInstagram className='header_icon' /></a>
-                                <a style={{textDecoration:"none"}} href="https://wa.me/7039571383" target="_blank" rel="noopener noreferrer"><RiWhatsappFill className='header_icon' /></a>
-                                <a style={{textDecoration:"none"}} href="https://www.linkedin.com/company/jm-edu-innovation/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn className='header_icon' /></a>
+
+                            <p className="footer_description">
+                                Delivering high-impact digital solutions,
+                                custom web development, SEO strategies, and
+                                performance marketing to help your business
+                                scale and succeed online.
+                            </p>
+
+                            {/* Social Icons */}
+                            <div className="footer_icon_div">
+
+                                <a
+                                    href="https://www.facebook.com/jmeduinnovationworld"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Facebook"
+                                >
+                                    <FaFacebookF className="header_icon" />
+                                </a>
+
+                                <a
+                                    href="https://www.instagram.com/jm_edu_innovation/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram"
+                                >
+                                    <FiInstagram className="header_icon" />
+                                </a>
+
+                                <a
+                                    href="https://wa.me/7039571383"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="WhatsApp"
+                                >
+                                    <RiWhatsappFill className="header_icon" />
+                                </a>
+
+                                <a
+                                    href="https://www.linkedin.com/company/jm-edu-innovation/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="LinkedIn"
+                                >
+                                    <FaLinkedinIn className="header_icon" />
+                                </a>
+
                             </div>
-                        </div>
-                    </Col>
-            
-                    <Col className="footer_col" sm={8} md={4} lg={3} >
-                        <div>
-                            <p className='footer_headings'>Quick Links</p>
-                            <Link className='footer_atag' to="/about"><p>About Us</p></Link>
-                            <Link className='footer_atag' to="/digital"><p>Web Development</p></Link>
-                            <Link className='footer_atag' to="/seo"><p>SEO Services</p></Link>
-                            <Link className='footer_atag' to="/marketing"><p>Digital Marketing</p></Link>
-                            <Link className='footer_atag' to="/performance"><p>Performance Marketing</p></Link>
-                            <Link className='footer_atag' to="/creative"><p>Creative & Branding</p></Link>
-                            <Link className='footer_atag' to="/contact"><p>Contact Us</p></Link>
+
                         </div>
                     </Col>
 
-                    <Col className="footer_col" sm={8} md={4} lg={3} >
-                        <div>
-                            <p className='footer_headings'>Help & Policies</p>
-                            <Link className='footer_atag' to="/contact"><p>Terms of Use</p></Link>
-                            <Link className='footer_atag' to="/contact"><p>Privacy Policy</p></Link>
-                            <Link className='footer_atag' to="/contact"><p>Support & FAQs</p></Link>
+
+                    {/* ================= QUICK LINKS ================= */}
+                    <Col
+                        className="footer_col footer_quick"
+                        sm={12}
+                        md={6}
+                        lg={2}
+                    >
+                        <div className="footer_section">
+
+                            <p className="footer_headings">
+                                Quick Links
+                            </p>
+
+                            <div className="footer_links">
+
+                                <Link
+                                    className="footer_atag"
+                                    to="/"
+                                >
+                                    Home
+                                </Link>
+
+                                <Link
+                                    className="footer_atag"
+                                    to="/about"
+                                >
+                                    About Us
+                                </Link>
+
+                                <Link
+                                    className="footer_atag"
+                                    to="/career"
+                                >
+                                    Career
+                                </Link>
+
+                                <Link
+                                    className="footer_atag"
+                                    to="/contact"
+                                >
+                                    Contact Us
+                                </Link>
+
+                                <Link
+                                    className="footer_atag"
+                                    to="/contact"
+                                >
+                                    Support &amp; FAQs
+                                </Link>
+
+                            </div>
+
                         </div>
                     </Col>
-            
-                    <Col className="footer_col" sm={8} md={4} lg={3} >
-                        <div>
-                            <p className='footer_headings'>Contact Us</p>
-                            <p className=''>11 Block, Rajendra Nagar</p>
-                            <p className=''>Bareilly, Uttar Pradesh, India</p>
-                            <p className=''>
-                                <a href="mailto:rishabdutt4@gmail.com" style={{ color: '#fff', textDecoration: 'none' }}>
-                                    info@dexterityworld.com
-                                </a>
+
+
+                    {/* ================= SERVICES ================= */}
+                    <Col
+                        className="footer_col footer_services"
+                        sm={12}
+                        md={6}
+                        lg={3}
+                    >
+                        <div className="footer_section">
+
+                            <p className="footer_headings">
+                                Services
                             </p>
-                            <p className=''>
-                                <a href="tel:+917055255255" style={{ color: '#ff8a00', textDecoration: 'none', fontWeight: 600 }}>
-                                    +91 7055255255
-                                </a>
-                            </p>
+
+                            <div className="footer_links">
+
+                                <Link
+                                    className="footer_atag footer_service_link"
+                                    to="/seo"
+                                >
+                                    SEO Services
+                                </Link>
+
+                                <Link
+                                    className="footer_atag footer_service_link"
+                                    to="/marketing"
+                                >
+                                    Digital Marketing
+                                </Link>
+
+                                <Link
+                                    className="footer_atag footer_service_link"
+                                    to="/performance"
+                                >
+                                    Performance Marketing
+                                </Link>
+
+                                <Link
+                                    className="footer_atag footer_service_link"
+                                    to="/digital"
+                                >
+                                    Web Development
+                                </Link>
+
+                                <Link
+                                    className="footer_atag footer_service_link"
+                                    to="/creative"
+                                >
+                                    Creative &amp; Branding
+                                </Link>
+
+                            </div>
+
                         </div>
                     </Col>
-              
+
+
+                    {/* ================= CONTACT ================= */}
+                    <Col
+                        className="footer_col footer_contact"
+                        sm={12}
+                        md={6}
+                        lg={4}
+                    >
+                        <div className="footer_section">
+
+                            <p className="footer_headings">
+                                Contact Us
+                            </p>
+
+                            <div className="contact_details">
+
+                                <p>
+                                    11 Block, Rajendra Nagar
+                                </p>
+
+                                <p>
+                                    Bareilly, Uttar Pradesh, India
+                                </p>
+
+                                <p>
+                                    <a
+                                        href="mailto:info@dexterityworld.com"
+                                        className="contact_link"
+                                    >
+                                        info@dexterityworld.com
+                                    </a>
+                                </p>
+
+                                <p>
+                                    <a
+                                        href="tel:+917055255255"
+                                        className="contact_phone"
+                                    >
+                                        +91 7055255255
+                                    </a>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </Col>
+
                 </Row>
+
             </Container>
         </Container>
     );
 };
 
 export default Footer;
-
-              
-
-             
-
-
-            

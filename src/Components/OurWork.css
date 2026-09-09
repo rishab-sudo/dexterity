@@ -4,24 +4,11 @@
 
 .our-work-section {
   width: 100%;
-  min-height: 620px;
-  padding: 55px 20px 70px;
+  min-height: 680px;
+  padding: 60px 20px 80px;
   position: relative;
   overflow: hidden;
-
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(255, 255, 255, 0.42) 0%,
-      rgba(255, 255, 255, 0) 48%
-    ),
-    linear-gradient(
-      110deg,
-      #f3dff0 0%,
-      #e8ddf8 48%,
-      #dcdffd 100%
-    );
-
+  background: linear-gradient(135deg, #0a0a0b 0%, #111113 60%, #1a0d00 100%);
   box-sizing: border-box;
 }
 
@@ -53,55 +40,46 @@
 .our-work-eyebrow {
   display: block;
   margin-bottom: 7px;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-
-  color: #8c82c9;
+  color: #FF6A1A;
 }
 
 .our-work-heading h2 {
   position: relative;
   display: inline-block;
-
   margin: 0;
-
-  font-family: Arial, Helvetica, sans-serif;
   font-size: clamp(25px, 3vw, 38px);
-  line-height: 0.98;
+  line-height: 1.1;
   font-weight: 800;
   letter-spacing: -1.5px;
-
-  color: #24243a;
+  color: #fff;
 }
 
-.heading-red {
-  color: #ed251d;
+.heading-orange {
+  color: #FF6A1A;
 }
 
 .heading-dark {
-  color: #28283a;
+  color: #fff;
 }
 
+/* Remove old red references */
+.heading-red { color: #FF6A1A; }
 
 /* Small decorative underline */
-
 .our-work-heading h2::after {
   content: "";
   position: absolute;
-
   width: 72px;
   height: 7px;
-
   right: -2px;
   bottom: -7px;
-
   border-radius: 50%;
+  border-top: 3px solid #FF6A1A;
 
-  border-top: 3px solid #ed5966;
   transform: rotate(-3deg);
 
   opacity: 0.8;
@@ -304,20 +282,22 @@
 .our-work-card-inner {
   width: 100%;
   height: 100%;
-
   position: relative;
-
   overflow: hidden;
-
   border-radius: inherit;
+}
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(250, 250, 250, 1) 0%,
-      rgba(239, 239, 239, 0.98) 45%,
-      rgba(211, 211, 211, 0.96) 100%
-    );
+/* Real image */
+.our-work-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.our-work-card.is-center .our-work-card-img {
+  transform: scale(1.04);
 }
 
 
@@ -421,147 +401,107 @@
 
 .our-work-card-overlay {
   position: absolute;
-
   inset: 0;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0) 30%,
-      rgba(255, 255, 255, 0.12) 48%,
-      rgba(255, 255, 255, 0.68) 100%
-    );
-
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.0) 40%,
+    rgba(0,0,0,0.65) 100%
+  );
   z-index: 2;
-
   pointer-events: none;
-}
-
-
-/* =========================================================
-   LOGOS
-========================================================= */
-
-.our-work-logo {
-  position: absolute;
-
-  left: 50%;
-  top: 34%;
-
-  transform: translate(-50%, -50%);
-
-  z-index: 5;
-
-  white-space: nowrap;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  text-align: center;
-
-  font-weight: 700;
-}
-
-
-/* Blue B */
-
-.logo-blue {
-  font-size: 52px;
-  font-weight: 300;
-
-  font-family: Georgia, serif;
-
-  color: #3f69e9;
-
-  text-shadow:
-    2px 0 #9c39d5,
-    -1px 0 #2d54db;
-}
-
-
-/* RDI */
-
-.logo-rdi {
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: 30px;
-
-  font-weight: 500;
-
-  color: #69606c;
-
-  letter-spacing: -2px;
-}
-
-
-/* RedBus */
-
-.logo-redbus {
   display: flex;
-  align-items: center;
-  gap: 4px;
-
-  font-size: 20px;
-  font-weight: 600;
-
-  color: #dc383e;
+  align-items: flex-end;
+  padding: 14px;
 }
 
-.redbus-icon {
-  font-size: 24px;
-  transform: rotate(-8deg);
+.our-work-card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-
-/* SOBHA */
-
-.logo-sobha {
-  padding: 10px 8px;
-
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: 14px;
-
-  letter-spacing: 1px;
-
-  color: #444;
-
-  background: rgba(247, 211, 87, 0.88);
+.our-work-card.is-center .our-work-card-tag {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 
-/* TONGGUY */
+/* Active project info */
+.our-work-active-info {
+  text-align: center;
+  margin-bottom: 20px;
+  min-height: 60px;
+}
 
-.logo-tongguy {
-  font-family: Impact, Arial Black, sans-serif;
+.our-work-active-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
 
+.our-work-active-title {
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 4px;
+}
+
+.our-work-active-category {
   font-size: 13px;
-
-  letter-spacing: -0.5px;
-
-  color: #222;
-
-  transform:
-    translate(-50%, -50%)
-    scaleX(0.9);
+  color: rgba(255,255,255,0.5);
+  margin: 0;
 }
 
-
-/* =========================================================
-   DOTS
-========================================================= */
-
-.our-work-dots {
-  width: 100%;
-
+/* Nav row */
+.our-work-nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 18px;
+  margin-top: 14px;
+}
 
+.our-work-arrow {
+  background: rgba(255,106,26,0.12);
+  border: 1px solid rgba(255,106,26,0.35);
+  color: #FF6A1A;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  line-height: 1;
+}
+
+.our-work-arrow:hover {
+  background: #FF6A1A;
+  color: #fff;
+  border-color: #FF6A1A;
+}
+
+/* Dots */
+.our-work-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 7px;
-
-  margin-top: -2px;
-
   position: relative;
   z-index: 20;
 }
@@ -569,21 +509,12 @@
 .our-work-dot {
   width: 6px;
   height: 6px;
-
   padding: 0;
-
   border: none;
-
   border-radius: 50%;
-
-  background: rgba(70, 64, 110, 0.25);
-
+  background: rgba(255, 106, 26, 0.3);
   cursor: pointer;
-
-  transition:
-    width 0.3s ease,
-    background 0.3s ease,
-    transform 0.3s ease;
+  transition: width 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
 
 .our-work-dot:hover {
@@ -592,10 +523,8 @@
 
 .our-work-dot.active {
   width: 22px;
-
   border-radius: 10px;
-
-  background: #ed251d;
+  background: #FF6A1A;
 }
 
 

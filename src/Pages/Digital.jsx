@@ -104,9 +104,7 @@ const styles = `
   }
 
   .wd-h1 {
-    font-size: clamp(2.2rem, 4.6vw, 3.6rem);
     line-height: 1.05;
-    font-weight: 800;
     letter-spacing: -0.02em;
     margin: 18px 0 20px;
   }
@@ -227,15 +225,12 @@ const styles = `
     margin-bottom: 32px;
   }
   .wd-section-title {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 800;
     letter-spacing: -0.01em;
   }
   .wd-section-title .accent { color: var(--orange); }
   .wd-section-sub {
     text-align: center;
     color: var(--muted);
-    font-size: 14px;
     margin-top: 10px;
   }
 
@@ -919,7 +914,7 @@ export default function WebDesigningSection() {
               05. Web Designing
             </motion.span>
 
-            <motion.h1 className="wd-h1" variants={fadeUp}>
+            <motion.h1 className="wd-h1 section-heading" variants={fadeUp}>
               Digital Experiences <span className="accent">That Captivate</span>
             </motion.h1>
 
@@ -964,7 +959,7 @@ export default function WebDesigningSection() {
       <section className="wd-section wd-benefits-wrap">
         <Reveal>
           <motion.div className="wd-section-head" variants={fadeUp}>
-            <h2 className="wd-section-title">
+            <h2 className="wd-section-title section-heading">
               The Benefits of <span className="accent">Our Websites</span>
             </h2>
           </motion.div>
@@ -992,7 +987,7 @@ export default function WebDesigningSection() {
         <div className="wd-process-wrap" ref={processRef}>
           <Reveal>
             <motion.div className="wd-section-head" variants={fadeUp} style={{ marginBottom: 30 }}>
-              <h2 className="wd-section-title">
+              <h2 className="wd-section-title section-heading">
                 Our Development <span className="accent">Process</span>
               </h2>
             </motion.div>
@@ -1027,7 +1022,7 @@ export default function WebDesigningSection() {
       <section className="wd-section wd-bento-wrap">
         <Reveal>
           <motion.div className="wd-section-head" variants={fadeUp}>
-            <h2 className="wd-section-title">
+            <h2 className="wd-section-title section-heading">
               Why Choose <span className="accent">Us</span>
             </h2>
           </motion.div>
@@ -1056,11 +1051,11 @@ export default function WebDesigningSection() {
       <section className="wd-section wd-how-wrap">
         <Reveal>
           <motion.div className="wd-section-head" variants={fadeUp} style={{ marginBottom: 8 }}>
-            <h2 className="wd-section-title">
+            <h2 className="wd-section-title section-heading">
               How We <span className="accent">Work</span>
             </h2>
           </motion.div>
-          <motion.p className="wd-section-sub" variants={fadeUp} style={{ marginBottom: 40 }}>
+          <motion.p className="wd-section-sub section-subHeading" variants={fadeUp} style={{ marginBottom: 40 }}>
             Our proven methodology ensures consistent results.
           </motion.p>
 
@@ -1095,11 +1090,11 @@ export default function WebDesigningSection() {
       <section className="wd-section wd-pricing-wrap">
         <Reveal>
           <motion.div className="wd-section-head" variants={fadeUp} style={{ marginBottom: 8 }}>
-            <h2 className="wd-section-title">
+            <h2 className="wd-section-title section-heading">
               Transparent <span className="accent">Pricing</span>
             </h2>
           </motion.div>
-          <motion.p className="wd-section-sub" variants={fadeUp} style={{ marginBottom: 44 }}>
+          <motion.p className="wd-section-sub section-subHeading" variants={fadeUp} style={{ marginBottom: 44 }}>
             Choose the plan that fits your growth goals.
           </motion.p>
 
@@ -1249,7 +1244,7 @@ export default function WebDesigningSection() {
       <section className="wd-section wd-faq-wrap">
         <Reveal>
           <motion.div className="wd-section-head" variants={fadeUp}>
-            <h2 className="wd-section-title">
+            <h2 className="wd-section-title section-heading">
               Frequently Asked <span className="accent">Questions</span>
             </h2>
           </motion.div>

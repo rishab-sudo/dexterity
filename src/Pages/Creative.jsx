@@ -85,7 +85,7 @@ const styles = `
 
   .cb-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange-deep); margin-bottom: 16px; }
   .cb-eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--orange-deep); }
-  .cb-h1 { font-size: clamp(2.1rem, 4.4vw, 3.3rem); line-height: 1.08; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 20px; }
+  .cb-h1 { line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 20px; }
   .cb-h1 .accent { background: linear-gradient(100deg, var(--orange-light), var(--orange)); -webkit-background-clip: text; background-clip: text; color: transparent; display: block; }
   .cb-lede { color: var(--ink-muted); font-size: 15.5px; line-height: 1.75; max-width: 540px; margin-bottom: 16px; }
   .cb-btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
@@ -93,7 +93,7 @@ const styles = `
   /* ---------- BENEFITS + PROCESS (dark block) ---------- */
   .cb-dark-block { padding: 90px 0 110px; }
   .cb-section-head { text-align: center; margin-bottom: 34px; }
-  .cb-section-title { font-size: clamp(1.6rem, 3vw, 2.15rem); font-weight: 800; letter-spacing: -0.01em; }
+  .cb-section-title { letter-spacing: -0.01em; }
   .cb-section-title .accent { color: var(--orange); }
 
   .cb-benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 90px; }
@@ -336,7 +336,7 @@ export default function CreativeBrandCommunication() {
 
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.span className="cb-eyebrow" variants={fadeUp}>06. Creative Design</motion.span>
-            <motion.h1 className="cb-h1" variants={fadeUp}>
+            <motion.h1 className="cb-h1 section-heading" variants={fadeUp}>
               Creative & Brand
               <span className="accent">Communication</span>
             </motion.h1>
@@ -376,7 +376,7 @@ export default function CreativeBrandCommunication() {
         <div className="cb-section">
           <Reveal>
             <motion.div className="cb-section-head" variants={fadeUp}>
-              <h2 className="cb-section-title">The Benefits of <span className="accent">Our Creative Work</span></h2>
+              <h2 className="cb-section-title section-heading">The Benefits of <span className="accent">Our Creative Work</span></h2>
             </motion.div>
             <div className="cb-benefits-grid">
               {benefits.map((b) => {
@@ -402,7 +402,7 @@ export default function CreativeBrandCommunication() {
 
           <Reveal>
             <motion.div className="cb-section-head" variants={fadeUp}>
-              <h2 className="cb-section-title">Our Creative <span className="accent">Process</span></h2>
+              <h2 className="cb-section-title section-heading">Our Creative <span className="accent">Process</span></h2>
             </motion.div>
             <div className="cb-process-track">
               <div className="cb-process-line" />
@@ -436,7 +436,7 @@ export default function CreativeBrandCommunication() {
         <div className="cb-section">
           <Reveal>
             <motion.div className="cb-section-head" variants={fadeUp}>
-              <h2 className="cb-section-title">Why Choose <span className="accent">Us</span></h2>
+              <h2 className="cb-section-title section-heading">Why Choose <span className="accent">Us</span></h2>
             </motion.div>
             <div className="cb-why-grid">
               {whyChooseUs.map((w) => {
@@ -459,9 +459,9 @@ export default function CreativeBrandCommunication() {
         <div className="cb-section">
           <Reveal>
             <motion.div className="cb-section-head" variants={fadeUp} style={{ marginBottom: 6 }}>
-              <h2 className="cb-section-title">How We <span className="accent">Work</span></h2>
+              <h2 className="cb-section-title section-heading">How We <span className="accent">Work</span></h2>
             </motion.div>
-            <motion.p className="cb-how-sub" variants={fadeUp}>Our proven methodology ensures consistent results.</motion.p>
+            <motion.p className="cb-how-sub section-subHeading" variants={fadeUp}>Our proven methodology ensures consistent results.</motion.p>
             <div className="cb-how-grid">
               {howWeWork.map((s, i) => (
                 <React.Fragment key={s.title}>
@@ -493,9 +493,9 @@ export default function CreativeBrandCommunication() {
         <div className="cb-section">
           <Reveal>
             <motion.div className="cb-section-head" variants={fadeUp} style={{ marginBottom: 6 }}>
-              <h2 className="cb-section-title">Transparent <span className="accent">Pricing</span></h2>
+              <h2 className="cb-section-title section-heading">Transparent <span className="accent">Pricing</span></h2>
             </motion.div>
-            <motion.p className="cb-pricing-sub" variants={fadeUp}>Choose the plan that fits your brand's growth goals.</motion.p>
+            <motion.p className="cb-pricing-sub section-subHeading" variants={fadeUp}>Choose the plan that fits your brand's growth goals.</motion.p>
             <div className="cb-pricing-grid">
               {pricingTiers.map((p) => (
                 <motion.div className={`cb-price-card ${p.popular ? "popular" : ""}`} key={p.tier} variants={fadeUp}>
@@ -592,7 +592,7 @@ export default function CreativeBrandCommunication() {
         <div className="cb-section">
           <Reveal>
             <motion.div className="cb-section-head" variants={fadeUp}>
-              <h2 className="cb-section-title">Frequently Asked <span className="accent">Questions</span></h2>
+              <h2 className="cb-section-title section-heading">Frequently Asked <span className="accent">Questions</span></h2>
             </motion.div>
             <div className="cb-faq-grid">
               {faqs.map((f, i) => {

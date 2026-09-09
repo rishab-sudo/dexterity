@@ -1,38 +1,375 @@
-.footer_fluid{
+/* =========================================
+   FOOTER MAIN
+========================================= */
+
+.footer_fluid {
+    width: 100%;
     background-color: #000;
-    padding: 15px;
+    padding: 55px 0 45px;
+    margin: 0;
 }
-.footer_icon_div{
-display: flex;
-justify-content: flex-start;
-align-items: center;
-gap: 15px;
+
+.footer_container {
+    width: 100%;
+    max-width: 1400px;
 }
-.header_icon{
-    color: #FFA157;
-    background-color: #fff;
-    border-radius: 50%;
-    padding: 5px;
-    font-size: 28px;
-}
-.header_icons_div{
+
+
+/* =========================================
+   FOUR EQUAL 25% COLUMNS
+========================================= */
+
+.footer_row {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0;
 }
-.footer_atag{
+
+.footer_col {
+    flex: 0 0 25%;
+    max-width: 25%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding: 10px 35px;
+}
+
+
+/* Remove uneven Bootstrap spacing */
+
+.footer_brand,
+.footer_quick,
+.footer_services,
+.footer_contact {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+
+/* =========================================
+   FOOTER SECTIONS
+========================================= */
+
+.footer_section {
+    width: 100%;
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+.footer_headings {
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #FF6A1A;
+
+    margin: 0 0 20px;
+
+    letter-spacing: 0.03em;
+}
+
+
+/* =========================================
+   BRAND DESCRIPTION
+========================================= */
+
+.footer_description {
+    max-width: 320px;
+
+    color: #d1d1d1;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    margin: 0 0 25px;
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+.footer_links {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+
+.footer_atag {
+    display: block;
+
+    width: fit-content;
+
     color: #fff;
     text-decoration: none;
-    
-  }
-  .footer_col{
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Same orange hover for Quick Links + Services */
+
+.footer_atag:hover {
+    color: #FF6A1A !important;
+    transform: translateX(4px);
+}
+
+
+/* =========================================
+   SERVICES
+========================================= */
+
+.footer_service_link {
+    color: #fff;
+}
+
+.footer_service_link:hover {
+    color: #FF6A1A !important;
+}
+
+
+/* =========================================
+   SOCIAL ICONS
+========================================= */
+
+.footer_icon_div {
     display: flex;
-    justify-content: center;
     align-items: center;
-  }
-  .footer_headings{
-    font-size: 25px;
-    font-weight: 600;
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    margin-top: 5px;
+}
+
+.footer_icon_div a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+}
+
+
+.header_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 7px;
+
+    color: #FFA157;
+
+    background-color: #fff;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.footer_icon_div a:hover .header_icon {
+    color: #fff;
+    background-color: #FF6A1A;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact_details {
+    display: flex;
+    flex-direction: column;
+
+    gap: 11px;
+}
+
+
+.contact_details p {
+    margin: 0;
+
+    color: #d1d1d1;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.contact_link {
+    color: #fff;
+
+    text-decoration: none;
+
+    transition: color 0.25s ease;
+}
+
+.contact_link:hover {
     color: #FF6A1A;
-  }
+}
+
+
+.contact_phone {
+    color: #FF6A1A;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: color 0.25s ease;
+}
+
+.contact_phone:hover {
+    color: #fff;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991px) {
+
+    .footer_fluid {
+        padding: 45px 20px 35px;
+    }
+
+    .footer_row {
+        flex-wrap: wrap;
+        row-gap: 35px;
+    }
+
+    .footer_col {
+        flex: 0 0 50%;
+        max-width: 50%;
+
+        padding: 10px 25px;
+    }
+
+    .footer_brand,
+    .footer_quick,
+    .footer_services,
+    .footer_contact {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+
+    .footer_fluid {
+        padding: 40px 15px 30px;
+    }
+
+    .footer_row {
+        display: flex;
+        flex-direction: column;
+
+        gap: 30px;
+    }
+
+    .footer_col {
+        flex: 0 0 100%;
+        max-width: 100%;
+
+        width: 100%;
+
+        padding: 10px 15px;
+    }
+
+    .footer_brand,
+    .footer_quick,
+    .footer_services,
+    .footer_contact {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .footer_headings {
+        font-size: 17px;
+        margin-bottom: 16px;
+    }
+
+    .footer_description {
+        max-width: 100%;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .footer_links {
+        gap: 11px;
+    }
+
+    .footer_atag {
+        font-size: 13px;
+    }
+
+    .contact_details {
+        gap: 9px;
+    }
+
+    .contact_details p {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .footer_fluid {
+        padding: 35px 10px 25px;
+    }
+
+    .footer_col {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .footer_brand,
+    .footer_quick,
+    .footer_services,
+    .footer_contact {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .footer_icon_div {
+        gap: 10px;
+    }
+
+    .header_icon {
+        width: 30px;
+        height: 30px;
+    }
+}

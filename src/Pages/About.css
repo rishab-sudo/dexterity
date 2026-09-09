@@ -1,18 +1,22 @@
 /* ============ Design tokens ============ */
 .about_fluid {
-  --ink: #0B1220;
-  --paper: #F7F5F0;
-  --signal: #FF5A36;
-  --signal-soft: #EAEFFF;
-  --ember: #FF5A36;
-  --slate: #6B7280;
-  --line: #E4E1D8;
+  --ink: #F5F1EA;              /* primary text on dark bg */
+  --paper: #0B0710;            /* base background (deep near-black) */
+  --paper-2: #1A0F1C;          /* secondary panel bg */
+  --signal: #FF7A1A;           /* orange accent */
+  --signal-soft: rgba(255, 122, 26, 0.14);
+  --ember: #FFB020;            /* warm highlight for numbers */
+  --slate: #B9B2C4;            /* muted body text on dark */
+  --line: rgba(245, 241, 234, 0.12);
 
-  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
-  --font-body: "Inter", "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+  --font-mono: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
 
-  background: var(--paper);
+  background:
+    radial-gradient(1100px 600px at 8% -10%, rgba(255, 122, 26, 0.16), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(80, 20, 60, 0.35), transparent 55%),
+    var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
 }
@@ -35,33 +39,10 @@
 .habout_image_div img {
   width: 100%;
   display: block;
-  border-radius: 6px;
-  filter: grayscale(15%);
-}
-
-.habout_image_badge {
-  position: absolute;
-  left: 24px;
-  bottom: -22px;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.02em;
-  padding: 12px 18px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 12px 24px rgba(11, 18, 32, 0.18);
-}
-
-.habout_badge_dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ember);
-  box-shadow: 0 0 0 4px rgba(255, 90, 54, 0.18);
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  filter: saturate(1.03);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
 }
 
 .habout_text_div {
@@ -70,38 +51,58 @@
 }
 
 .page_heading {
-
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--signal);
   margin-bottom: 14px;
 }
 
 .page_subheading {
-
   color: var(--ink);
 }
 
 .page_text {
-
   max-width: 52ch;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 3.6vw, 46px);
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 22px;
+}
+
+.section-para {
+  color: var(--slate);
+  font-size: 15.5px;
+  line-height: 1.7;
+  max-width: 54ch;
+  margin-bottom: 16px;
 }
 
 .page_btn.habout_btn {
   margin-top: 12px;
   padding: 14px 30px;
-  background: var(--ink);
+  background: var(--signal);
   color: var(--paper);
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.02em;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 26px rgba(255, 122, 26, 0.28);
 }
 
 .page_btn.habout_btn:hover {
-  background: var(--signal);
+  background: var(--ember);
   transform: translateY(-1px);
 }
 
@@ -112,7 +113,7 @@
 
 /* ============ Stats / experience strip ============ */
 .about_stats_section {
-  background: var(--ink);
+  background: transparent;
   padding: 56px 0;
   margin-top: 24px;
 }
@@ -120,7 +121,7 @@
 .about_stats_container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: 20px;
   padding: 0 24px;
 }
 
@@ -128,20 +129,17 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-left: 1px solid rgba(247, 245, 240, 0.14);
-  padding-left: 20px;
-}
-
-.about_stat:first-child {
-  border-left: none;
-  padding-left: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper-2);
+  padding: 22px 20px;
 }
 
 .about_stat_number {
-  font-family: var(--font-mono);
-  font-size: clamp(32px, 3.4vw, 44px);
-  font-weight: 500;
-  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.2vw, 40px);
+  font-weight: 600;
+  color: var(--ember);
   line-height: 1;
 }
 
@@ -151,7 +149,7 @@
 
 .about_stat_label {
   font-size: 13px;
-  color: rgba(247, 245, 240, 0.6);
+  color: var(--slate);
   letter-spacing: 0.01em;
 }
 
@@ -163,7 +161,7 @@
 }
 
 .brands_eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -196,9 +194,9 @@
   font-size: 20px;
   letter-spacing: 0.02em;
   color: var(--ink);
-  opacity: 0.45;
+  opacity: 0.4;
   white-space: nowrap;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .brand_chip:hover {
@@ -221,11 +219,7 @@
 @media (max-width: 900px) {
   .about_stats_container {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 36px;
-  }
-  .about_stat:nth-child(3) {
-    border-left: none;
-    padding-left: 0;
+    row-gap: 16px;
   }
 }
 
@@ -236,15 +230,5 @@
   }
   .about_stats_container {
     grid-template-columns: 1fr;
-  }
-  .about_stat {
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid rgba(247, 245, 240, 0.14);
-    padding-top: 16px;
-  }
-  .about_stat:first-child {
-    border-top: none;
-    padding-top: 0;
   }
 }

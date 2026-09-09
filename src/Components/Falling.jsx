@@ -21,7 +21,7 @@ import { useEffect, useRef, useState } from "react";
 // lift:    vertical offset from baseline, px (negative = higher up)
 // overlap: negative margin-left to pull it toward the previous tag, px
 const TAGS = [
-  { text: "#Strategy",   gradient: "linear-gradient(135deg,#fbe8ff,#f1e6ff)", color: "#5b21b6", rotate: -90, lift: 0,   overlap: 0,   pad: "34px 14px" },
+  { text: "#Strategy",   gradient: "linear-gradient(135deg,#fbe8ff,#f1e6ff)", color: "#5b21b6", rotate: -90, lift: 0,   overlap: 0,   pad: "10px 14px" },
   { text: "#Awesome!",   gradient: "linear-gradient(120deg,#8fc4ff,#c2a9ff)", color: "#1e2033", rotate: -4,  lift: 34,  overlap: 8 },
   { text: "#Development",gradient: "linear-gradient(120deg,#a6b2f5,#8b93ef)", color: "#1e2033", rotate: -2,  lift: 34,  overlap: -8 },
   { text: "#leads",      gradient: "linear-gradient(160deg,#22d3ee,#0ea5e9)", color: "#0f172a", rotate: -58, lift: -22, overlap: 4 },

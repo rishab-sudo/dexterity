@@ -105,9 +105,7 @@ const styles = `
   }
 
   .dm-h1 {
-    font-size: clamp(2.2rem, 4.6vw, 3.6rem);
     line-height: 1.05;
-    font-weight: 800;
     letter-spacing: -0.02em;
     margin: 18px 0 20px;
   }
@@ -228,8 +226,6 @@ const styles = `
     margin-bottom: 32px;
   }
   .dm-section-title {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 800;
     letter-spacing: -0.01em;
   }
   .dm-section-title .accent { color: var(--orange); }
@@ -676,7 +672,7 @@ export default function DigitalMarketingSection() {
               01. Digital Marketing
             </motion.span>
 
-            <motion.h1 className="dm-h1" variants={fadeUp}>
+            <motion.h1 className="dm-h1 section-heading" variants={fadeUp}>
               Drive Revenue with <span className="accent">Precision Marketing</span>
             </motion.h1>
 
@@ -784,7 +780,7 @@ export default function DigitalMarketingSection() {
       <section className="dm-section dm-benefits-wrap">
         <Reveal>
           <motion.div className="dm-section-head" variants={fadeUp}>
-            <h2 className="dm-section-title">
+            <h2 className="dm-section-title section-heading">
               The Benefits of <span className="accent">Our Approach</span>
             </h2>
           </motion.div>
@@ -814,7 +810,7 @@ export default function DigitalMarketingSection() {
       <section className="dm-section dm-bento-wrap">
         <Reveal>
           <motion.div className="dm-section-head" variants={fadeUp}>
-            <h2 className="dm-section-title">
+            <h2 className="dm-section-title section-heading">
               Why Choose <span className="accent">Us</span>
             </h2>
           </motion.div>
@@ -843,7 +839,7 @@ export default function DigitalMarketingSection() {
       <section className="dm-section dm-process-wrap" ref={processRef}>
         <Reveal>
           <motion.div className="dm-section-head" variants={fadeUp}>
-            <h2 className="dm-section-title">
+            <h2 className="dm-section-title section-heading">
               Our Marketing <span className="accent">Process</span>
             </h2>
           </motion.div>
@@ -877,11 +873,11 @@ export default function DigitalMarketingSection() {
       <section className="dm-section dm-how-wrap">
         <Reveal>
           <motion.div className="dm-section-head" variants={fadeUp} style={{ marginBottom: 8 }}>
-            <h2 className="dm-section-title">
+            <h2 className="dm-section-title section-heading">
               How We <span className="accent">Work</span>
             </h2>
           </motion.div>
-          <motion.p className="dm-how-sub" variants={fadeUp}>
+          <motion.p className="dm-how-sub section-subHeading" variants={fadeUp}>
             Our proven methodology ensures consistent results.
           </motion.p>
 

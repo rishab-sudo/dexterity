@@ -32,7 +32,7 @@
     transition: background-color 1s ease, color 1s ease; /* Slow transition time */
   }
   .cr_btn:hover{
-    background-color:#1842b6 ;
+    background-color:#b66418 ;
     color: #ffffff;
   }
   /* ----------------------------- */

@@ -5,6 +5,11 @@ import "./About.css"
 import PageBanner from '../Components/PageBanner'
 import Falling from '../Components/Falling'
 import OurWork from '../Components/OurWork'
+import Credentials from '../Components/Credentials'
+import Mission from '../Components/Mission'
+import Culture from '../Components/Culture'
+import WhyUs from '../Components/WhyUs'
+import aboutImage from "../assets/about.png";
 
 // Swap these for your real numbers
 const stats = [
@@ -74,71 +79,69 @@ const Stat = ({ value, suffix, label }) => {
 const About = () => {
   return (
     <>
-       <PageBanner
+      <PageBanner
         title="About Us"
         currentPage="About Us"
-        videoSrc="/videos/contact-banner.mp4"
+        bgImage={aboutImage}
       />
 
-    <Container fluid className='g-0 about_fluid'>
+      <Container fluid className='g-0 about_fluid'>
 
-      {/* ---------- Hero ---------- */}
-      <Container className='habout_content_container'>
-        <div className='habout_image_div'>
-          <img src={require("../assets/dwabout1.jpg")} alt="Our team at work" />
-          <div className='habout_image_badge'>
-            <span className='habout_badge_dot' />
-            Actively growing 40+ brands
+        {/* ---------- Hero ---------- */}
+        <Container className='habout_content_container'>
+          <div className='habout_image_div'>
+            <img src={require("../assets/dwabout1.jpg")} alt="Our team at work" />
           </div>
-        </div>
 
-        <div className='habout_text_div'>
-          <h6 className='page_heading eyebrow-text'>About Us</h6>
-          <h5 className='section-heading'>
-            About DexterityWorld And Its<br /> Innovative IT Solutions
-          </h5>
-          <p className='section-para'>
-            At DexterityWorld, we empower ambitious brands to thrive in the digital age. 
-            We engineer high-performance web applications, drive organic search rankings through advanced SEO, 
-            and design conversion-focused marketing campaigns tailored to your business goals.
-          </p>
-          <p className='section-para'>
-            With a team of seasoned strategists, developers, and creative designers, we turn complex technical 
-            challenges into scalable, profitable digital experiences that deliver real, measurable ROI.
-          </p>
-          <Link to='/contact' className='page_btn habout_btn' style={{ textDecoration: 'none', display: 'inline-block' }}>
-            Contact Us
-          </Link>
-        </div>
-      </Container>
-
-      <Falling/>
-
-
-      {/* ---------- Stats / experience strip ---------- */}
-      <div className='about_stats_section'>
-        <Container className='about_stats_container'>
-          {stats.map((s) => (
-            <Stat key={s.label} value={s.value} suffix={s.suffix} label={s.label} />
-          ))}
+          <div className='habout_text_div'>
+            <h6 className='page_heading eyebrow-text'>About Us</h6>
+            <h5 className='section-heading'>
+              About DexterityWorld And Its<br /> Innovative IT Solutions
+            </h5>
+            <p className='section-para'>
+              At DexterityWorld, we empower ambitious brands to thrive in the digital age.
+              We engineer high-performance web applications, drive organic search rankings through advanced SEO,
+              and design conversion-focused marketing campaigns tailored to your business goals.
+            </p>
+            <p className='section-para'>
+              With a team of seasoned strategists, developers, and creative designers, we turn complex technical
+              challenges into scalable, profitable digital experiences that deliver real, measurable ROI.
+            </p>
+            <Link to='/contact' className='page_btn habout_btn' style={{ textDecoration: 'none', display: 'inline-block' }}>
+              Contact Us
+            </Link>
+          </div>
         </Container>
-      </div>
 
-      {/* ---------- Brands worked with ---------- */}
-      <div className='about_brands_section'>
-        <p className='brands_eyebrow'>Trusted by teams at</p>
-        <div className='brands_marquee'>
-          <div className='brands_track'>
-            {[...brands, ...brands].map((name, i) => (
-              <span className='brand_chip' key={`${name}-${i}`}>{name}</span>
+        <Falling />
+        <Mission />
+
+        {/* ---------- Stats / experience strip ---------- */}
+        <div className='about_stats_section'>
+          <Container className='about_stats_container'>
+            {stats.map((s) => (
+              <Stat key={s.label} value={s.value} suffix={s.suffix} label={s.label} />
             ))}
+          </Container>
+        </div>
+
+        {/* ---------- Brands worked with ---------- */}
+        <div className='about_brands_section'>
+          <p className='brands_eyebrow'>Trusted by teams at</p>
+          <div className='brands_marquee'>
+            <div className='brands_track'>
+              {[...brands, ...brands].map((name, i) => (
+                <span className='brand_chip' key={`${name}-${i}`}>{name}</span>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      <OurWork/>
-
-    </Container>
+        <Credentials />
+        <Culture />
+        <WhyUs />
+        <OurWork />
+      </Container>
     </>
   )
 }

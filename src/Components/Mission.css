@@ -1,0 +1,134 @@
+.mission {
+  width: 100%;
+  background-color: #f8fafc;
+  padding: 80px 24px;
+}
+
+.mission__container {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.mission__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mission__eyebrow-line {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: #f97316;
+}
+
+.mission__eyebrow-text {
+  color: #f97316;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.mission__heading {
+  font-size: 44px;
+  line-height: 1.15;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 16px;
+}
+
+.mission__heading-accent {
+  color: #f97316;
+}
+
+.mission__divider {
+  width: 40px;
+  height: 3px;
+  border-radius: 999px;
+  background-color: #f97316;
+  margin-bottom: 24px;
+}
+
+.mission__subheading {
+  color: #64748b;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 0 48px;
+}
+
+.mission__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.mission__card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 40px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.mission__card:hover {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.mission__icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #fdece0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.mission__icon {
+  width: 28px;
+  height: 28px;
+  color: #f97316;
+  display: flex;
+}
+
+.mission__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mission__card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 12px;
+}
+
+.mission__card-description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #64748b;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .mission__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .mission {
+    padding: 56px 20px;
+  }
+
+  .mission__heading {
+    font-size: 32px;
+  }
+}

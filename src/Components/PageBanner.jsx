@@ -2,22 +2,35 @@ import React from "react";
 import "./PageBanner.css";
 import { Link } from "react-router-dom";
 
+const PAGE_FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&auto=format&fit=crop&q=80";
+
 const PageBanner = ({
   title = "Page Title",
   currentPage = "Current Page",
-  videoSrc = "/videos/banner-video.mp4",
+  videoSrc = "",
+  bgImage = PAGE_FALLBACK_IMAGE,
 }) => {
   return (
-    <section className="page-banner">
-      <video
-        className="page-banner-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src={videoSrc} type="video/mp4" />
-      </video>
+    <section
+      className="page-banner"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {videoSrc && (
+        <video
+          className="page-banner-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      )}
 
       <div className="page-banner-overlay" />
 
