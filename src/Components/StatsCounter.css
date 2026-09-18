@@ -32,6 +32,40 @@
 
 @media (max-width: 768px) {
   .cr_custom_bottom_container {
-    margin-top: 20px;
+    margin: 20px 16px 30px;
+    padding: 20px 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  .cr_content_div {
+    padding: 8px 6px;
+  }
+
+  .cr_content_div span:first-child {
+    font-size: 26px;
+  }
+
+  .cr_content_div span:last-child {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 420px) {
+  .cr_custom_bottom_container {
+    margin: 15px 10px 24px;
+    padding: 16px 8px;
+    gap: 12px;
+  }
+
+  .cr_content_div span:first-child {
+    font-size: 22px;
+  }
+
+  .cr_content_div span:last-child {
+    font-size: 11px;
   }
 }

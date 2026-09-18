@@ -157,7 +157,12 @@
 
 @media (max-width: 767px) {
   .about-premium-section {
-    padding: 70px 0;
+    padding: 60px 0;
+  }
+
+  .about-premium-wrapper {
+    gap: 30px;
+    padding: 0 16px;
   }
 
   .about-stats {
@@ -173,5 +178,29 @@
 
   .stat-item {
     padding: 20px 16px;
+  }
+
+  .stat-item h4 {
+    font-size: 28px;
+  }
+
+  .premium-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-premium-section {
+    padding: 48px 0;
+  }
+
+  .about-image {
+    border-radius: 18px;
+  }
+
+  .experience-card {
+    padding: 14px 18px;
+    border-radius: 14px;
   }
 }

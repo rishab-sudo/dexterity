@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 85vh;
+  height:88vh;
   min-height: 520px;
   max-height: 780px;
 }
@@ -115,13 +115,14 @@
 }
 
 @media (max-width: 768px) {
-  .hero_carousel_wrap,
-  .hm_cousel_img {
+  .hero_carousel_wrap {
     height: 380px;
     min-height: 380px;
+    max-height: 420px;
   }
 
   .hm_cousel_img {
+    height: 100%;
     object-position: center 20%;
   }
 
@@ -136,5 +137,34 @@
   .cr_btn {
     padding: 8px 18px;
     font-size: 13px;
+  }
+
+  .cr_btn_div {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero_carousel_wrap {
+    height: 320px;
+    min-height: 280px;
+  }
+
+  .carousel_caption {
+    width: 95%;
+  }
+
+  .carousel_caption h3 {
+    font-size: 18px;
+  }
+
+  .carousel_caption p {
+    font-size: 12px;
+  }
+
+  .cr_btn {
+    padding: 7px 14px;
+    font-size: 12px;
   }
 }

@@ -418,3 +418,25 @@
   color: #0f172a;
   margin: 0;
 }
+
+/* ========= NAVBAR RESPONSIVE ========= */
+@media (max-width: 991px) {
+  .top_bar_inner {
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top_bar_inner {
+    padding: 8px 12px;
+  }
+
+  .brand_text {
+    font-size: 17px;
+  }
+
+  .brand_tagline {
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+}

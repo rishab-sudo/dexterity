@@ -204,15 +204,39 @@
     grid-template-columns: 1fr;
     max-width: 650px;
   }
+
+  .audit-form-side {
+    border-radius: 22px 22px 0 0;
+  }
+
+  .audit-content-side {
+    border-radius: 0 0 22px 22px;
+  }
 }
 
 @media (max-width: 576px) {
+  .audit-section {
+    padding: 40px 12px;
+  }
+
   .audit-form-side,
   .audit-content-side {
-    padding: 30px 20px;
+    padding: 28px 18px;
   }
 
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .audit-heading,
+  .audit-content-heading {
+    font-size: 22px;
+  }
+
+  .audit-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
   }
 }

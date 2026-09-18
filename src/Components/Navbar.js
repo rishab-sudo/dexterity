@@ -3,11 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import "./Navbar.css";
 
 const SERVICE_LINKS = [
-  { label: "SEO", href: "/seo" },
-  { label: "Website Designing", href: "/digital" },
-  { label: "Marketing", href: "/marketing" },
-  { label: "Creative & Branding", href: "/creative" },
+  { label: "Digital Marketing Strategy", href: "/marketing" },
+  { label: "Search Engine Optimization", href: "/seo" },
+  { label: "Social Media Marketing", href: "/marketing" },
   { label: "Performance Marketing", href: "/performance" },
+  { label: "Web Design & Development", href: "/digital" },
+  { label: "Creative & Brand Communication", href: "/creative" },
 ];
 
 const NAV_LINKS = [

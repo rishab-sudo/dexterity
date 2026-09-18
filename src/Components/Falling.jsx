@@ -167,47 +167,77 @@ export default function FallingTagsSection({ triggerOnce = true }) {
   }, [inView, triggerOnce]);
 
   return (
-    <section
-      ref={sectionRef}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        gap: "28px 0",
-        padding: "96px 24px",
-        overflow: "hidden",
-      }}
-    >
-      {TAGS.map((tag, i) => (
-        <span
-          key={tag.text}
-          ref={(el) => (tagRefs.current[i] = el)}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            whiteSpace: "nowrap",
-            padding: tag.pad || "12px 22px",
-            marginLeft: i === 0 ? 0 : tag.overlap,
-            borderRadius: 999,
-            background: tag.gradient,
-            color: tag.color,
-            fontWeight: 600,
-            fontSize: "1.05rem",
-            fontFamily:
-              "'Poppins','Segoe UI',system-ui,-apple-system,sans-serif",
-            boxShadow: "0 6px 16px rgba(20,20,43,0.10)",
-            opacity: 0,
-            willChange: "transform, opacity",
-            transform: `translateY(-340px) rotate(${tag.rotate}deg)`,
-            position: "relative",
-            zIndex: i + 1,
-          }}
-        >
-          {tag.text}
-        </span>
-      ))}
-    </section>
+    <>
+      <style>{`
+        .falling-tags-section {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 28px 0;
+          padding: 96px 24px;
+          overflow: hidden;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .falling-tag-item {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap;
+          border-radius: 999px;
+          font-weight: 600;
+          font-size: 1.05rem;
+          font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+          box-shadow: 0 6px 16px rgba(20, 20, 43, 0.10);
+          opacity: 0;
+          will-change: transform, opacity;
+          position: relative;
+        }
+        @media (max-width: 768px) {
+          .falling-tags-section {
+            padding: 50px 16px;
+            gap: 18px 0;
+          }
+          .falling-tag-item {
+            font-size: 0.9rem !important;
+            padding: 8px 16px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .falling-tags-section {
+            padding: 36px 10px;
+            gap: 14px 0;
+          }
+          .falling-tag-item {
+            font-size: 0.8rem !important;
+            padding: 6px 12px !important;
+            margin-left: 2px !important;
+          }
+        }
+      `}</style>
+      <section
+        ref={sectionRef}
+        className="falling-tags-section"
+      >
+        {TAGS.map((tag, i) => (
+          <span
+            key={tag.text}
+            ref={(el) => (tagRefs.current[i] = el)}
+            className="falling-tag-item"
+            style={{
+              padding: tag.pad || "12px 22px",
+              marginLeft: i === 0 ? 0 : tag.overlap,
+              background: tag.gradient,
+              color: tag.color,
+              transform: `translateY(-340px) rotate(${tag.rotate}deg)`,
+              zIndex: i + 1,
+            }}
+          >
+            {tag.text}
+          </span>
+        ))}
+      </section>
+    </>
   );
 }

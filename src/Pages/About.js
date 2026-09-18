@@ -89,11 +89,7 @@ const About = () => {
 
         {/* ---------- Hero ---------- */}
         <Container className='habout_content_container'>
-          <div className='habout_image_div'>
-            <img src={require("../assets/dwabout1.jpg")} alt="Our team at work" />
-          </div>
-
-          <div className='habout_text_div'>
+          <div className='habout_text_div habout_animate' style={{ animationDelay: '0.1s' }}>
             <h6 className='page_heading eyebrow-text'>About Us</h6>
             <h5 className='section-heading'>
               About DexterityWorld And Its<br /> Innovative IT Solutions
@@ -107,9 +103,17 @@ const About = () => {
               With a team of seasoned strategists, developers, and creative designers, we turn complex technical
               challenges into scalable, profitable digital experiences that deliver real, measurable ROI.
             </p>
-            <Link to='/contact' className='page_btn habout_btn' style={{ textDecoration: 'none', display: 'inline-block' }}>
+            <Link
+              to='/contact'
+              className='page_btn habout_btn habout_animate'
+              style={{ textDecoration: 'none', display: 'inline-block', animationDelay: '0.35s' }}
+            >
               Contact Us
             </Link>
+          </div>
+
+          <div className='habout_image_div habout_animate' style={{ animationDelay: '0.2s' }}>
+            <img src={require("../assets/about1.png")} alt="Our team at work" />
           </div>
         </Container>
 

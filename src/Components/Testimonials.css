@@ -81,11 +81,50 @@
 }
 
 @media (max-width: 768px) {
+  .client_fluid {
+    padding: 45px 0;
+  }
+
+  .clinet_heading_wrapper {
+    margin-bottom: 24px;
+  }
+
   .slider .slick-slide {
     padding: 0 8px;
   }
 
   .slider .slick-list {
     margin: 0 -8px;
+  }
+
+  .review_main_div {
+    min-height: auto;
+    padding: 20px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .client_fluid {
+    padding: 36px 0;
+  }
+
+  .review_main_div {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+
+  .flex_div img:not(.line) {
+    width: 40px;
+    height: 40px;
+  }
+
+  .flex_div .client_name {
+    font-size: 15px;
+    padding-top: 6px;
+  }
+
+  .flex_div .client_review {
+    font-size: 13px;
+    line-height: 1.5;
   }
 }

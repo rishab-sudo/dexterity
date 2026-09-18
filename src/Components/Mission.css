@@ -1,7 +1,24 @@
+/* ============================================================
+   Mission section — light theme.
+   This section intentionally breaks from the dark page theme
+   as a deliberate "color block" panel (one theme switch, once
+   per page), keeping the single site accent (orange) locked
+   across both the dark and light zones so the brand stays
+   consistent even as the background flips.
+   ============================================================ */
+
 .mission {
+  --m-signal: #FF7A1A;            /* same accent as the dark theme */
+  --m-signal-soft: rgba(255, 122, 26, 0.1);
+  --m-bg: #F8FAFC;
+  --m-ink: #0F172A;
+  --m-slate: #64748B;
+  --m-line: #E2E8F0;
+  --m-card-bg: #FFFFFF;
+
   width: 100%;
-  background-color: #f8fafc;
-  padding: 80px 24px;
+  background: var(--m-bg);
+  padding: 88px 24px 96px;
 }
 
 .mission__container {
@@ -9,10 +26,27 @@
   margin: 0 auto;
 }
 
+/* ---------- Header block ---------- */
+.mission__header {
+  max-width: 640px;
+  margin: 0 auto 48px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mission__header.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .mission__eyebrow {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 16px;
 }
 
@@ -20,82 +54,106 @@
   display: inline-block;
   width: 24px;
   height: 2px;
-  background-color: #f97316;
+  background-color: var(--m-signal);
 }
 
 .mission__eyebrow-text {
-  color: #f97316;
-  font-size: 14px;
+  color: var(--m-signal);
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .mission__heading {
-  font-size: 44px;
+  font-size: clamp(28px, 3.4vw, 42px);
   line-height: 1.15;
-  font-weight: 800;
-  color: #0f172a;
+  font-weight: 700;
+  color: var(--m-ink);
   margin: 0 0 16px;
 }
 
 .mission__heading-accent {
-  color: #f97316;
-}
-
-.mission__divider {
-  width: 40px;
-  height: 3px;
-  border-radius: 999px;
-  background-color: #f97316;
-  margin-bottom: 24px;
+  color: var(--m-signal);
 }
 
 .mission__subheading {
-  color: #64748b;
-  font-size: 18px;
-  line-height: 1.6;
-  max-width: 720px;
-  margin: 0 0 48px;
+  color: var(--m-slate);
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 auto;
 }
 
+/* ---------- Cards — one row, three across, centered ---------- */
 .mission__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
+  align-items: stretch;
 }
 
 .mission__card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--m-card-bg);
+  border: 1px solid var(--m-line);
   border-radius: 16px;
-  padding: 40px 32px;
+  padding: 40px 30px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: box-shadow 0.2s ease;
+
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
+.mission__card.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Orange hover highlight */
 .mission__card:hover {
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  border-color: var(--m-signal);
+  background: var(--m-signal-soft);
+  box-shadow: 0 16px 36px rgba(255, 122, 26, 0.18);
+  transform: translateY(-4px);
+}
+
+.mission__card.is-in-view:hover {
+  transform: translateY(-4px);
+}
+
+.mission__card:hover .mission__icon-wrap {
+  background: var(--m-signal);
+  border-color: var(--m-signal);
+}
+
+.mission__card:hover .mission__icon {
+  color: #FFFFFF;
 }
 
 .mission__icon-wrap {
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background-color: #fdece0;
+  background: var(--m-signal-soft);
+  border: 1px solid rgba(255, 122, 26, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .mission__icon {
-  width: 28px;
-  height: 28px;
-  color: #f97316;
+  width: 26px;
+  height: 26px;
+  color: var(--m-signal);
   display: flex;
+  transition: color 0.25s ease;
 }
 
 .mission__icon svg {
@@ -106,29 +164,45 @@
 .mission__card-title {
   font-size: 18px;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--m-ink);
   margin: 0 0 12px;
 }
 
 .mission__card-description {
   font-size: 14px;
   line-height: 1.7;
-  color: #64748b;
+  color: var(--m-slate);
   margin: 0;
 }
 
-@media (max-width: 1024px) {
+/* ---------- Responsive ----------
+   Stays one row down to tablet width; only stacks on small phones
+   where three columns would be unreadably narrow. */
+@media (max-width: 860px) {
   .mission__grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 560px) {
   .mission {
-    padding: 56px 20px;
+    padding: 64px 20px 72px;
   }
 
-  .mission__heading {
-    font-size: 32px;
+  .mission__card {
+    padding: 32px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mission__header,
+  .mission__card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .mission__card:hover {
+    transform: none;
   }
 }

@@ -153,16 +153,23 @@ const Footer = () => {
 
                                 <Link
                                     className="footer_atag footer_service_link"
+                                    to="/marketing"
+                                >
+                                    Digital Marketing Strategy
+                                </Link>
+
+                                <Link
+                                    className="footer_atag footer_service_link"
                                     to="/seo"
                                 >
-                                    SEO Services
+                                    Search Engine Optimization
                                 </Link>
 
                                 <Link
                                     className="footer_atag footer_service_link"
                                     to="/marketing"
                                 >
-                                    Digital Marketing
+                                    Social Media Marketing
                                 </Link>
 
                                 <Link
@@ -176,14 +183,14 @@ const Footer = () => {
                                     className="footer_atag footer_service_link"
                                     to="/digital"
                                 >
-                                    Web Development
+                                    Web Design &amp; Development
                                 </Link>
 
                                 <Link
                                     className="footer_atag footer_service_link"
                                     to="/creative"
                                 >
-                                    Creative &amp; Branding
+                                    Creative &amp; Brand Communication
                                 </Link>
 
                             </div>

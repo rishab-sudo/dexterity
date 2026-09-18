@@ -142,17 +142,18 @@
 /* ===== Mobile ===== */
 @media (max-width: 767px) {
   .industry-services-section {
-    padding: 70px 0;
+    padding: 60px 0;
   }
 
   .industry-grid {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 0 16px;
+    max-width: 100%;
   }
 
   .industry-card {
-    min-height: 360px;
+    min-height: 300px;
     border-radius: 22px;
   }
 
@@ -170,5 +171,33 @@
 
   .industry-btn {
     width: 100%;
+  }
+
+  .industry-header {
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .industry-services-section {
+    padding: 48px 0;
+  }
+
+  .industry-card {
+    min-height: 260px;
+    border-radius: 18px;
+  }
+
+  .industry-overlay {
+    padding: 20px;
+  }
+
+  .industry-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .industry-content p {
+    font-size: 13px;
+    margin-bottom: 18px;
   }
 }

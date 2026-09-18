@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Mission.css";
 
 const PILLARS = [
@@ -57,35 +57,86 @@ const PILLARS = [
   },
 ];
 
+// Reveals an element once it scrolls into view (respects reduced-motion).
+const useInView = (threshold = 0.25) => {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      setInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, inView];
+};
+
+const MissionCard = ({ pillar, index }) => {
+  const [cardRef, cardInView] = useInView(0.2);
+  return (
+    <div
+      ref={cardRef}
+      className={`mission__card ${cardInView ? "is-in-view" : ""}`}
+      style={{ transitionDelay: `${index * 0.1}s` }}
+    >
+      <div className="mission__icon-wrap">
+        <span className="mission__icon">{pillar.icon}</span>
+      </div>
+      <h3 className="mission__card-title">{pillar.label}</h3>
+      <p className="mission__card-description">{pillar.description}</p>
+    </div>
+  );
+};
+
 export default function Mission() {
+  const [headerRef, headerInView] = useInView(0.3);
+
   return (
     <section className="mission">
       <div className="mission__container">
-        <div className="mission__eyebrow">
-          <span className="mission__eyebrow-line" />
-          <span className="mission__eyebrow-text">Our Foundation</span>
+        <div
+          ref={headerRef}
+          className={`mission__header ${headerInView ? "is-in-view" : ""}`}
+        >
+          <div className="mission__eyebrow">
+            <span className="mission__eyebrow-line" />
+            <span className="mission__eyebrow-text">Our Foundation</span>
+          </div>
+
+          <h2 className="mission__heading">
+            Mission, Vision &amp;{" "}
+            <span className="mission__heading-accent">Core Values</span>
+          </h2>
+
+          <p className="mission__subheading">
+            Everything we do is guided by a clear purpose — to help businesses
+            grow sustainably in the digital world with honesty and expertise.
+          </p>
         </div>
 
-        <h2 className="mission__heading">
-          Mission, Vision &amp; <span className="mission__heading-accent">Core Values</span>
-        </h2>
-
-        <div className="mission__divider" />
-
-        <p className="mission__subheading">
-          Everything we do is guided by a clear purpose — to help businesses
-          grow sustainably in the digital world with honesty and expertise.
-        </p>
-
         <div className="mission__grid">
-          {PILLARS.map((pillar) => (
-            <div className="mission__card" key={pillar.key}>
-              <div className="mission__icon-wrap">
-                <span className="mission__icon">{pillar.icon}</span>
-              </div>
-              <h3 className="mission__card-title">{pillar.label}</h3>
-              <p className="mission__card-description">{pillar.description}</p>
-            </div>
+          {PILLARS.map((pillar, index) => (
+            <MissionCard pillar={pillar} index={index} key={pillar.key} />
           ))}
         </div>
       </div>
